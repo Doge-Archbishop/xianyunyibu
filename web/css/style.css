@@ -582,3 +582,255 @@ input, select { font-family: inherit; font-size: inherit; outline: none; }
   100% { opacity: 0; transform: translateY(-24px) scaleX(1.5); }
 }
 .loading-text { font-size: 0.8rem; color: #A09888; font-family: 'STSong', serif; }
+
+/* ══════════════════════════════════════
+   动画特效库
+   ══════════════════════════════════════ */
+
+/* 卦爻从下往上逐层构建 */
+.hexagram-view.building .yao-row {
+  opacity: 0; transform: translateY(16px);
+  animation: line-build 0.3s ease-out forwards;
+}
+.hexagram-view.building .yao-row:nth-child(6) { animation-delay: 0s; }
+.hexagram-view.building .yao-row:nth-child(5) { animation-delay: 0.15s; }
+.hexagram-view.building .yao-row:nth-child(4) { animation-delay: 0.3s; }
+.hexagram-view.building .yao-row:nth-child(3) { animation-delay: 0.45s; }
+.hexagram-view.building .yao-row:nth-child(2) { animation-delay: 0.6s; }
+.hexagram-view.building .yao-row:nth-child(1) { animation-delay: 0.75s; }
+@keyframes line-build {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 结果卡片错落入场 */
+.stagger-card {
+  opacity: 0; transform: translateY(20px);
+  animation: card-in 0.4s ease-out forwards;
+}
+.stagger-card:nth-child(1) { animation-delay: 0s; }
+.stagger-card:nth-child(2) { animation-delay: 0.08s; }
+.stagger-card:nth-child(3) { animation-delay: 0.16s; }
+.stagger-card:nth-child(4) { animation-delay: 0.24s; }
+.stagger-card:nth-child(5) { animation-delay: 0.32s; }
+.stagger-card:nth-child(6) { animation-delay: 0.4s; }
+.stagger-card:nth-child(7) { animation-delay: 0.48s; }
+@keyframes card-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 签文等级光晕脉冲 */
+.result-level { animation: glow-pulse 2s ease-in-out infinite; }
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(255,255,255,0.2); }
+  50% { box-shadow: 0 0 20px rgba(255,215,0,0.5), 0 0 40px rgba(255,180,0,0.2); }
+}
+
+/* 摇卦铜钱粒子飞溅 */
+.coin-particle {
+  position: fixed; pointer-events: none; z-index: 999;
+  font-size: 1.2rem; animation: particle-fly 0.8s ease-out forwards;
+}
+@keyframes particle-fly {
+  0% { opacity: 1; transform: translate(0,0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx),var(--dy)) scale(0); }
+}
+
+/* 太极图悬浮旋转 */
+.taiji-float {
+  animation: taiji-float 4s ease-in-out infinite;
+}
+@keyframes taiji-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(90deg); }
+  50% { transform: translateY(0) rotate(180deg); }
+  75% { transform: translateY(6px) rotate(270deg); }
+}
+
+/* 五行柱状图填充动画 */
+.wuxing-bar .bar-fill {
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0 !important;
+}
+.wuxing-bar.animated .bar-fill { width: var(--target-width) !important; }
+
+/* 按钮涟漪效果 */
+.btn-primary, .btn-outline {
+  position: relative; overflow: hidden;
+}
+.btn-ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: scale(0); animation: ripple 0.6s ease-out;
+  pointer-events: none;
+}
+@keyframes ripple {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* 大吉上签庆祝粒子 */
+.confetti-container {
+  position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+}
+.confetti {
+  position: absolute; width: 8px; height: 8px;
+  animation: confetti-fall 2s ease-out forwards;
+}
+@keyframes confetti-fall {
+  0% { opacity: 1; transform: translateY(-60px) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(100vh) rotate(720deg); }
+}
+
+/* 紫微星曜闪烁 */
+.star-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; text-shadow: 0 0 6px rgba(201,169,110,0.6); }
+}
+
+/* 页面过渡 */
+#page-content { transition: opacity 0.25s ease; }
+#page-content.switching { opacity: 0; }
+
+/* ══════════════════════════════════════
+   深色模式
+   ══════════════════════════════════════ */
+body.dark { background: #1A1A2E; color: #D5CFC0; }
+body.dark .card,
+body.dark .explain-card,
+body.dark .hexagram-view,
+body.dark .tiyong-card,
+body.dark .tip-card,
+body.dark .zwds-cell,
+body.dark .dayun-item,
+body.dark .line-card,
+body.dark .module-card,
+body.dark .setting-item,
+body.dark .history-item,
+body.dark .stat-item,
+body.dark .glossary,
+body.dark .trigram-box,
+body.dark .tiyong-card,
+body.dark .interpret-item,
+body.dark .inter-item,
+body.dark .advice-item,
+body.dark .explanation-section,
+body.dark .poem-section { background: #252540; border-color: rgba(201,169,110,0.15); color: #D5CFC0; }
+body.dark .card-title,
+body.dark .section-title,
+body.dark .setting-title,
+body.dark .item-module,
+body.dark .page-title,
+body.dark .area-title,
+body.dark .module-name,
+body.dark .header-count,
+body.dark .tip-title,
+body.dark .section-header .header-title,
+body.dark .glossary-title,
+body.dark .g-title { color: #E8D5A3; }
+body.dark .card-text,
+body.dark .setting-desc,
+body.dark .item-text,
+body.dark .summary-text,
+body.dark .draw-hint,
+body.dark .tip-content,
+body.dark .glossary-text,
+body.dark .g-text,
+body.dark .col-title,
+body.dark .cell-stems,
+body.dark .page-desc,
+body.dark .dayun-item,
+body.dark .history-item { color: #A09888; }
+body.dark .module-subtitle,
+body.dark .draw-note,
+body.dark .item-label,
+body.dark .info-sub,
+body.dark .pd-stems,
+body.dark .t-label,
+body.dark .time-hint,
+body.dark .random-hint,
+body.dark .bar-count,
+body.dark .dy-current { color: #8B7D6B; }
+body.dark #tab-bar { background: #1E1E32; border-top-color: rgba(201,169,110,0.12); }
+body.dark .tab-item { color: #6B5E4E; }
+body.dark .tab-item.active { color: #C9A96E; }
+body.dark .btn-outline { color: #C9A96E; border-color: #C9A96E; }
+body.dark .btn-outline:active { background: rgba(201,169,110,0.08); }
+body.dark .line-segment { background: #D5CFC0; }
+body.dark .line-card { background: #252540; }
+body.dark .line-card.changing { background: #2D1520; }
+body.dark .yao-type-tag { background: rgba(201,169,110,0.15); color: #C9A96E; }
+body.dark .tiyong-card.good { background: #1A2E1A; border-color: #4CAF50; }
+body.dark .tiyong-card.neutral { background: #2E261A; border-color: #FF9800; }
+body.dark .tiyong-card.bad { background: #2E1A1A; border-color: #F44336; }
+body.dark .zwds-cell { background: #252540; }
+body.dark .zwds-cell.ming-gong { background: #2D1520; }
+body.dark .pillars-table { background: #252540; }
+body.dark .td { border-bottom-color: rgba(201,169,110,0.08); }
+body.dark .td.highlight { background: rgba(201,169,110,0.08); }
+body.dark .result-header { color: #fff; }
+body.dark .toss-btn { box-shadow: 0 4px 16px rgba(139,26,26,0.4); }
+body.dark .daily-card { box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+body.dark select.dao-input,
+body.dark input.dao-input { background: #252540; color: #D5CFC0; border-color: rgba(201,169,110,0.2); }
+body.dark .glow-term { border-bottom-color: #C9A96E; }
+body.dark .notice-card { background: #2E261A; border-color: #8B7530; }
+body.dark .notice-text { color: #C9A96E; }
+body.dark .method-tab { background: #252540; color: #A09888; }
+body.dark .gender-tab { background: #252540; color: #A09888; }
+body.dark .progress-dot { background: #252540; }
+body.dark .yao-line-wrap::after { border-color: #1A1A2E; }
+body.dark .complete-section { color: #D5CFC0; }
+body.dark .smoke { background: rgba(201,169,110,0.2); }
+body.dark .popup-content { background: #252540; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+body.dark .popup-text { color: #D5CFC0; }
+
+/* 深色模式切换按钮 */
+.dark-toggle {
+  position: fixed; bottom: 72px; right: 12px; z-index: 99;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #FDF8F0; border: 1px solid rgba(201,169,110,0.3);
+  font-size: 1.1rem; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex; align-items: center; justify-content: center;
+}
+body.dark .dark-toggle { background: #252540; border-color: rgba(201,169,110,0.2); }
+
+/* ══════════════════════════════════════
+   知识卡片
+   ══════════════════════════════════════ */
+.knowledge-section { padding: 8px 16px 16px; }
+.knowledge-card {
+  background: linear-gradient(135deg, #FAF3E6, #FDF8F0);
+  border-radius: 12px; padding: 20px; margin-bottom: 12px;
+  border: 1px solid rgba(201,169,110,0.25); cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.knowledge-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(139,26,26,0.1); }
+.knowledge-card:active { transform: scale(0.98); }
+body.dark .knowledge-card { background: linear-gradient(135deg, #252540, #2A2A42); }
+.knowledge-icon { font-size: 1.5rem; margin-right: 10px; }
+.knowledge-title { font-size: 0.9rem; font-weight: bold; color: #8B1A1A; display: flex; align-items: center; }
+body.dark .knowledge-title { color: #C9A96E; }
+.knowledge-desc { font-size: 0.75rem; color: #6B5E4E; margin-top: 6px; line-height: 1.6; display: block; }
+body.dark .knowledge-desc { color: #8B7D6B; }
+
+/* ══════════════════════════════════════
+   五行雷达图
+   ══════════════════════════════════════ */
+.radar-container { display: flex; justify-content: center; padding: 12px 0; }
+.radar-canvas { max-width: 200px; max-height: 200px; }
+
+/* 收藏按钮 */
+.fav-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.8rem; padding: 4px 10px; border-radius: 12px;
+  background: rgba(201,169,110,0.1); color: #C9A96E;
+  cursor: pointer; border: 1px solid rgba(201,169,110,0.2);
+  transition: all 0.2s;
+}
+.fav-btn.favorited { background: #C62828; color: #fff; border-color: #C62828; }
+.fav-btn:active { transform: scale(0.95); }
+
+/* 搜索结果高亮 */
+mark { background: rgba(201,169,110,0.3); color: inherit; padding: 1px 2px; border-radius: 2px; }

@@ -49,7 +49,19 @@ Pages.home = function() {
     '<div class="tip-section"><div class="tip-card">' +
     '<div class="tip-header"><span class="tip-label">📖 道学小识</span><span class="tip-refresh" onclick="Pages.home()">换一条 ↻</span></div>' +
     '<span class="tip-title">' + tip.title + '</span><span class="tip-content">' + tip.content + '</span></div></div>' +
-    '<div class="disclaimer">本网页内容源自中国传统易学文化，仅供学习参考和娱乐。</div></div>';
+    '<div class="knowledge-section">' +
+    '<div class="knowledge-card" onclick="Router.navigate(\'/knowledge\')">' +
+    '<span class="knowledge-title"><span class="knowledge-icon">📚</span>易学入门指南</span>' +
+    '<span class="knowledge-desc">天干地支、五行生克、八卦六十四卦……零基础也能看懂的易学知识</span></div>' +
+    '<div class="knowledge-card" onclick="Router.navigate(\'/knowledge\')">' +
+    '<span class="knowledge-title"><span class="knowledge-icon">🔮</span>占卜方法对比</span>' +
+    '<span class="knowledge-desc">六爻、八字、紫微斗数、梅花易数——它们各自有什么特点？该选哪一种？</span></div></div>' +
+    '<div class="disclaimer">本网页内容源自中国传统易学文化，仅供学习参考和娱乐。</div></div>');
 
   renderPage(html);
+
+  // 上上签撒花
+  if (App.dailyFortuneToday && App.dailyFortuneToday.level === '上上') {
+    setTimeout(celebrate, 500);
+  }
 };

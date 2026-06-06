@@ -67,11 +67,41 @@ function esc(str) {
   return div.innerHTML;
 }
 
-// ═══ 渲染页面 ═══
+// ═══ 渲染页面（带过渡动画） ═══
 function renderPage(html) {
-  document.getElementById('page-content').innerHTML = html;
-  // 滚动到顶部
-  window.scrollTo(0, 0);
+  var content = document.getElementById('page-content');
+  content.classList.add('switching');
+  setTimeout(function() {
+    content.innerHTML = html;
+    content.classList.remove('switching');
+    window.scrollTo(0, 0);
+    // 触发错落动画
+    setTimeout(function() {
+      var cards = content.querySelectorAll('.stagger-card');
+      cards.forEach(function(c, i) { c.style.animationDelay = (i * 0.08) + 's'; });
+    }, 50);
+  }, 200);
+}
+
+// ═══ 撒花庆祝（上上签/大吉时触发） ═══
+function celebrate() {
+  var container = document.createElement('div');
+  container.className = 'confetti-container';
+  var colors = ['#C62828','#FFD700','#FF9800','#4CAF50','#2196F3','#E91E63'];
+  for (var i = 0; i < 40; i++) {
+    var confetti = document.createElement('div');
+    confetti.className = 'confetti';
+    confetti.style.left = Math.random() * 100 + '%';
+    confetti.style.top = -(Math.random() * 40) + 'px';
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.animationDelay = Math.random() * 1.5 + 's';
+    confetti.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+    confetti.style.width = (6 + Math.random() * 8) + 'px';
+    confetti.style.height = (6 + Math.random() * 8) + 'px';
+    container.appendChild(confetti);
+  }
+  document.body.appendChild(container);
+  setTimeout(function() { container.remove(); }, 4000);
 }
 
 // ═══ 高亮当前 tab ═══

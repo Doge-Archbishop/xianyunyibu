@@ -102,6 +102,8 @@ Pages.dailyFortune.draw = function() {
 Pages.dailyFortune.result = function() {
   var fortune = getTodayCachedFortune();
   if (!fortune) { Router.navigate('/daily-fortune/draw'); return; }
+  // 上上签撒花
+  if (fortune.level === '上上') { setTimeout(celebrate, 600); }
 
   var lc = getFortuneLevelColor(fortune.level);
   var emoji = getFortuneLevelEmoji(fortune.level);
