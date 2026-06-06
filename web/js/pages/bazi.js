@@ -88,5 +88,7 @@ Pages.bazi.analysis = function() {
     '<div class="card"><span class="card-title">❤️ 感情</span><span class="card-text">' + esc(interp.love) + '</span></div>' +
     '<div class="card"><span class="card-title">🏥 健康</span><span class="card-text">' + esc(interp.health) + '</span></div>' +
     '<div class="card highlight"><span class="card-title">📅 当前运势</span><span class="card-text">' + esc(interp.currentYun) + '</span></div>' +
+    '<button class="btn-outline" onclick="Router.navigate(\'/bazi/result\')">← 返回排盘</button>' +
+    '<button class="btn-outline" onclick="Router.navigate(\'/bazi/input\')">🔄 重新排盘</button>' +
     '<div class="disclaimer">以上分析仅供娱乐参考，命运掌握在自己手中</div></div>');
 };

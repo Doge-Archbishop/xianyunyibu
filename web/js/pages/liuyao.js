@@ -123,20 +123,19 @@ Pages.liuyao.result = function() {
     infoHtml += '<div class="info-row"><span class="info-label">状态</span><span class="info-value" style="color:#4CAF50">静卦（无变爻）</span></div>';
   }
 
-  // 吉凶判断
-  var judgementColor = r.changingLines.length > 0 ? '#FF9800' : '#4CAF50';
-  var judgementLabel = r.changingLines.length > 0 ? '有变爻，事在变化中' : '静卦，事态稳定';
+  var reading = generateHexagramReading(p, r.changingLines, t);
 
   renderPage('<div class="result-page animate-in">' +
     '<div class="hexagram-area"><span class="area-title">卦象</span>' + hexHtml + '</div>' +
     '<div class="info-section">' + infoHtml + '</div>' +
-    '<div class="card"><span class="card-title">📖 卦辞</span><span class="card-text">' + esc(p.judgement) + '</span>' +
-    (t ? '<span class="card-text mt">变卦卦辞：' + esc(t.judgement) + '</span>' : '') + '</div>' +
-    '<div class="card"><span class="card-title">💬 白话解读</span><span class="card-text">' + esc(p.plainSummary || '暂无解读') + '</span></div>' +
-    '<div class="card" style="border-left:3px solid ' + judgementColor + '"><span class="card-title">🎯 判断</span><span class="card-text">' + judgementLabel + '</span></div>' +
-    '<div class="card" wx:if="{{ r.changingLines.length > 0 }}">' +
-    '<span class="card-title">🌊 变化趋势</span>' +
-    '<span class="card-text">' + (t ? esc(t.plainSummary || '') : '') + '</span></div>' +
+    '<div class="card"><span class="card-title">📖 卦辞原文</span><span class="card-text">' + esc(p.judgement) + '</span></div>' +
+    '<div class="card"><span class="card-title">💬 综合解读</span><span class="card-text" style="white-space:pre-line">' + esc(reading.summary) + '</span></div>' +
+    '<div class="card"><span class="card-title">💼 事业</span><span class="card-text">' + esc(reading.career) + '</span></div>' +
+    '<div class="card"><span class="card-title">💰 财运</span><span class="card-text">' + esc(reading.wealth) + '</span></div>' +
+    '<div class="card"><span class="card-title">❤️ 感情</span><span class="card-text">' + esc(reading.love) + '</span></div>' +
+    '<div class="card"><span class="card-title">🏥 健康</span><span class="card-text">' + esc(reading.health) + '</span></div>' +
+    (reading.change ? '<div class="card highlight"><span class="card-title">🌊 变化趋势</span><span class="card-text" style="white-space:pre-line">' + esc(reading.change) + '</span></div>' : '') +
+    '<div class="card" style="background:#FAF3E6;border:1px solid #C9A96E"><span class="card-title">💡 综合建议</span><span class="card-text">' + esc(reading.advice) + '</span></div>' +
     '<div class="actions">' +
     '<button class="btn-primary" onclick="Router.navigate(\'/liuyao/detail\')">📋 逐爻详解</button>' +
     '<button class="btn-outline" onclick="Pages.liuyao.coinToss()">🔄 重新摇卦</button></div>' +

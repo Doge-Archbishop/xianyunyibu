@@ -130,13 +130,18 @@ Pages.meihua.result = function() {
 Pages.meihua.detail = function() {
   var r = App.meihuaResult;
   if (!r) { Router.navigate('/meihua/input'); return; }
+  var reading = generateHexagramReading(r.primaryHexagram, [r.changingLine - 1], r.transformedHexagram);
   renderPage('<div class="detail-page animate-in">' +
     '<div class="page-title">梅花易数 — 详解</div>' +
     '<div class="card"><span class="card-title">📖 本卦：' + r.primaryHexagram.name + '</span><span class="card-text">' + esc(r.primaryHexagram.judgement) + '</span></div>' +
-    '<div class="card"><span class="card-title">🔄 互卦：' + r.mutualHexagram.name + '</span><span class="card-text">' + esc(r.mutualHexagram.judgement) + '</span></div>' +
-    '<div class="card"><span class="card-title">🔮 变卦：' + r.transformedHexagram.name + '</span><span class="card-text">' + esc(r.transformedHexagram.judgement) + '</span></div>' +
+    '<div class="card"><span class="card-title">🔄 互卦（过程）：' + r.mutualHexagram.name + '</span><span class="card-text">' + esc(r.mutualHexagram.judgement) + '</span></div>' +
+    '<div class="card"><span class="card-title">🔮 变卦（结果）：' + r.transformedHexagram.name + '</span><span class="card-text">' + esc(r.transformedHexagram.judgement) + '</span></div>' +
     '<div class="card"><span class="card-title">⚡ 动爻（第' + r.changingLine + '爻）</span><span class="card-text">' + esc(r.primaryHexagram.lineTexts[r.changingLine - 1] || '') + '</span></div>' +
-    '<div class="card highlight"><span class="card-title">⚖️ 体用判断</span><span class="card-text">' + r.tiYongJudgement.desc + '</span></div>' +
+    '<div class="card highlight"><span class="card-title">⚖️ 体用生克分析</span><span class="card-text">' + r.tiYongJudgement.desc + '</span></div>' +
+    '<div class="card"><span class="card-title">💼 事业</span><span class="card-text">' + esc(reading.career) + '</span></div>' +
+    '<div class="card"><span class="card-title">💰 财运</span><span class="card-text">' + esc(reading.wealth) + '</span></div>' +
+    '<div class="card"><span class="card-title">❤️ 感情</span><span class="card-text">' + esc(reading.love) + '</span></div>' +
+    '<div class="card"><span class="card-title">💡 建议</span><span class="card-text">' + esc(reading.advice) + '</span></div>' +
     '<div class="glossary"><span class="g-title">📚 体用生克速查</span>' +
     '<span class="g-text"><b>体卦</b> = 代表你自己 · <b>用卦</b> = 代表你问的事情</span>' +
     '<span class="g-text">体克用 = 你能驾驭事（吉·需努力）</span>' +
@@ -144,5 +149,6 @@ Pages.meihua.detail = function() {
     '<span class="g-text">体生用 = 你消耗自己成全事（泄气）</span>' +
     '<span class="g-text">用生体 = 事反过来帮了你（进益·吉）</span>' +
     '<span class="g-text">体用比和 = 你与事和谐一致（大吉）</span></div>' +
-    '<button class="btn-outline" onclick="Router.navigate(\'/meihua/result\')">← 返回卦象</button></div>');
+    '<button class="btn-outline" onclick="Router.navigate(\'/meihua/result\')">← 返回卦象</button>' +
+    '<div class="disclaimer">仅供娱乐参考</div></div>');
 };

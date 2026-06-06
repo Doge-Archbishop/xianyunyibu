@@ -121,6 +121,6 @@ Pages.dailyFortune.result = function() {
     '<div class="inter-item"><span class="item-label">🏥 健康</span><span class="item-text">' + esc(fortune.modern.health) + '</span></div></div>' +
     '<div class="advice-item"><span class="item-label">💡 建议</span><span class="item-text advice-text">' + esc(fortune.modern.advice) + '</span></div></div>' +
     '<div class="explanation-section card"><span class="section-label">🔍 解曰</span><span class="explanation-text">' + esc(fortune.explanation) + '</span></div>' +
-    '<div class="actions"><button class="btn-outline" onclick="Router.navigate(\'/daily-fortune/draw\')">返回</button></div>' +
+    '<div class="actions"><button class="btn-outline" onclick="Router.navigate(\'/home\')">← 返回首页</button></div>' +
     '<div class="disclaimer">仅供娱乐参考，命运掌握在自己手中</div></div></div>');
 };
