@@ -72,7 +72,8 @@ Pages.bazi.result = function() {
     '<div class="daymaster-card stagger-card"><span class="dm-label">日主（你自己）</span><span class="dm-value">' + r.dayMaster + '（' + r.dayMasterWuxing + '）</span></div>' +
     '<div class="card stagger-card"><span class="card-title">🎨 五行分布</span>' + barsHtml + '</div>' +
     '<div class="card stagger-card"><span class="card-title">📅 大运</span><div class="dayun-list">' + dyHtml + '</div></div>' +
-    '<button class="btn-primary stagger-card" onclick="Router.navigate(\'/bazi/analysis\')">查看详细分析</button></div>');
+    '<button class="btn-primary stagger-card" onclick="Router.navigate(\'/bazi/analysis\')">查看详细分析</button>' +
+    '<button class="btn-outline stagger-card" onclick="Router.navigate(\'/home\')">← 返回首页</button></div>');
 };
 
 Pages.bazi.analysis = function() {
