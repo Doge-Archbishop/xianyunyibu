@@ -158,7 +158,8 @@ Pages.liuyao.result = function() {
     '<div class="card" style="background:#FAF3E6;border:1px solid #C9A96E"><span class="card-title">💡 综合建议</span><span class="card-text">' + esc(reading.advice) + '</span></div>' +
     '<div class="actions">' +
     '<button class="btn-primary" onclick="Router.navigate(\'/liuyao/detail\')">📋 逐爻详解</button>' +
-    '<button class="btn-outline" onclick="Pages.liuyao.coinToss()">🔄 重新摇卦</button></div>' +
+    '<button class="btn-outline" onclick="Pages.liuyao.coinToss()">🔄 重新摇卦</button>' +
+    '<button class="btn-outline" onclick="Router.navigate(\'/home\')">← 返回首页</button></div>' +
     '<div class="disclaimer">仅供娱乐参考</div></div>');
 };
 

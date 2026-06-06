@@ -118,6 +118,7 @@ Pages.zwds.chart = function() {
     '<span class="legend-item"><span class="legend-dot hk"></span>化科</span>' +
     '<span class="legend-item"><span class="legend-dot hj"></span>化忌</span>' +
     '</div>' +
+    '<button class="btn-outline stagger-card" onclick="Router.navigate(\'/home\')">← 返回首页</button>' +
     '<div class="disclaimer">以上命盘仅供娱乐参考</div></div>');
 
   // 触发星曜逐个亮起动画

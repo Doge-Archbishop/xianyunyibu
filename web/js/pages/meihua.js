@@ -124,7 +124,8 @@ Pages.meihua.result = function() {
     '<span class="tiyong-analysis">' + r.tiYongJudgement.desc + '</span></div>' +
     '<div class="actions">' +
     '<button class="btn-primary" onclick="Router.navigate(\'/meihua/detail\')">📋 查看详解</button>' +
-    '<button class="btn-outline" onclick="Router.navigate(\'/meihua/input\')">🔄 重新起卦</button></div></div>');
+    '<button class="btn-outline" onclick="Router.navigate(\'/meihua/input\')">🔄 重新起卦</button>' +
+    '<button class="btn-outline" onclick="Router.navigate(\'/home\')">← 返回首页</button></div></div>');
 };
 
 /** 详解页 */

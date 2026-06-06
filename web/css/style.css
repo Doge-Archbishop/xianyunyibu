@@ -238,17 +238,34 @@ input, select { font-family: inherit; font-size: inherit; outline: none; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 铜钱抛掷动画 */
-.toss-btn { transition: transform 0.15s, box-shadow 0.2s; }
-.toss-btn-icon { font-size: 2rem; display: block; margin-bottom: 4px; transition: transform 0.3s; }
-.toss-btn.tossing { transform: scale(0.9); box-shadow: 0 0 24px rgba(201,169,110,0.7), 0 0 48px rgba(255,180,0,0.3); }
-.toss-btn.tossing .toss-btn-icon { animation: coin-bounce 0.5s ease-out; }
-.toss-btn::after {
-  content: ''; position: absolute; inset: 0; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,215,0,0.4), transparent 70%);
-  opacity: 0; transition: opacity 0.2s;
+/* 铜钱按钮 — 仿古钱币造型 */
+.toss-btn {
+  width: 130px; height: 130px; border-radius: 50%; cursor: pointer;
+  background: radial-gradient(circle at 35% 35%, #E8C97A, #B8860B 60%, #8B6914 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #5D3A1A; box-shadow: 0 6px 20px rgba(139,105,20,0.4), inset 0 2px 4px rgba(255,255,255,0.3);
+  transition: transform 0.15s, box-shadow 0.2s; position: relative;
+  border: 3px solid #8B6914;
 }
-.toss-btn.tossing::after { opacity: 1; animation: ring-expand 0.5s ease-out; }
+/* 方孔效果 */
+.toss-btn::before {
+  content: ''; position: absolute; width: 28px; height: 28px;
+  background: #6B1010; border-radius: 3px;
+  border: 2px solid #8B6914;
+}
+.toss-btn::after {
+  content: ''; position: absolute; inset: 8px; border-radius: 50%;
+  border: 2px solid rgba(139,105,20,0.4); pointer-events: none;
+}
+.toss-btn-icon { font-size: 2.2rem; position: relative; z-index: 1; margin-bottom: 2px; line-height: 1; }
+.toss-btn-text { font-size: 0.85rem; font-family: 'STSong', serif; font-weight: bold; position: relative; z-index: 1; }
+.toss-hint { font-size: 0.7rem; opacity: 0.7; position: relative; z-index: 1; margin-top: 2px; color: #5D3A1A; }
+
+.toss-btn.tossing {
+  transform: scale(0.9);
+  box-shadow: 0 0 30px rgba(255,215,0,0.7), 0 0 60px rgba(255,180,0,0.3), 0 6px 20px rgba(139,105,20,0.4);
+}
+.toss-btn.tossing .toss-btn-icon { animation: coin-bounce 0.5s ease-out; }
 @keyframes coin-bounce {
   0% { transform: translateY(0) rotate(0deg); }
   20% { transform: translateY(-16px) rotate(15deg); }
@@ -833,7 +850,7 @@ body.dark .pillars-table { background: #252540; }
 body.dark .td { border-bottom-color: rgba(201,169,110,0.08); }
 body.dark .td.highlight { background: rgba(201,169,110,0.08); }
 body.dark .result-header { color: #fff; }
-body.dark .toss-btn { box-shadow: 0 4px 16px rgba(139,26,26,0.4); }
+body.dark .toss-btn { box-shadow: 0 6px 20px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.15); }
 body.dark .daily-card { box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
 body.dark select.dao-input,
 body.dark input.dao-input { background: #252540; color: #D5CFC0; border-color: rgba(201,169,110,0.2); }
