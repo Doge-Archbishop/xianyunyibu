@@ -1,5 +1,5 @@
 /**
- * 道易 — Hash 路由
+ * 闲云一卜 — Hash 路由
  */
 
 const Router = {

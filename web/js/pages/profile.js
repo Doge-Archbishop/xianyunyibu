@@ -21,11 +21,11 @@ Pages.profile = function() {
 
   renderPage('<div class="profile-page">' +
     '<div class="user-card"><div class="avatar-wrap"><div class="avatar-placeholder">👤</div></div>' +
-    '<div class="user-info"><span class="nickname">道易用户</span><span class="user-status">本地模式</span></div></div>' +
+    '<div class="user-info"><span class="nickname">闲云一卜用户</span><span class="user-status">本地模式</span></div></div>' +
     '<div class="stats-section"><div class="section-title"><span>📊 占卜统计</span></div><div class="stats-grid">' + statsHtml + '</div></div>' +
     '<div class="settings-section"><div class="section-title"><span>⚙️ 设置</span></div>' +
     '<div class="setting-item" onclick="showModal({title:\'免责声明\',content:\'本网页内容源自中国传统易学文化，仅供学习参考和娱乐。命运掌握在自己手中，请理性看待占卜结果。任何内容都不构成人生决策的依据。\'})"><div class="setting-info"><span class="setting-title">免责声明</span><span class="setting-desc">关于占卜结果的说明</span></div><span class="setting-arrow">›</span></div>' +
-    '<div class="setting-item" onclick="showModal({title:\'关于道易\',content:\'道易 v1.0.0\\n传承道家文化，探索易学智慧\\n\\n以现代技术呈现中国古代占卜术数，让更多人了解和欣赏中国传统文化的博大精深。\\n\\n⚠️ 仅供娱乐参考\'})"><div class="setting-info"><span class="setting-title">关于道易</span><span class="setting-desc">版本信息</span></div><span class="setting-arrow">›</span></div>' +
+    '<div class="setting-item" onclick="showModal({title:\'关于闲云一卜\',content:\'闲云一卜 v1.0.0\\n传承道家文化，探索易学智慧\\n\\n以现代技术呈现中国古代占卜术数，让更多人了解和欣赏中国传统文化的博大精深。\\n\\n⚠️ 仅供娱乐参考\'})"><div class="setting-info"><span class="setting-title">关于闲云一卜</span><span class="setting-desc">版本信息</span></div><span class="setting-arrow">›</span></div>' +
     '<div class="setting-item" onclick="if(confirm(\'确定清除所有本地数据？\')){localStorage.clear();showToast(\'数据已清除\');setTimeout(function(){Pages.profile()},1000)}"><div class="setting-info"><span class="setting-title">清除数据</span><span class="setting-desc">清除所有本地存储的占卜记录</span></div><span class="setting-arrow">›</span></div></div>' +
-    '<div class="footer"><span class="footer-text">道易 — 传承道家文化</span><span class="footer-text">仅供娱乐参考</span></div></div>');
+    '<div class="footer"><span class="footer-text">闲云一卜 — 传承道家文化</span><span class="footer-text">仅供娱乐参考</span></div></div>');
 };
