@@ -82,18 +82,14 @@ function esc(str) {
 function renderPage(html) {
   var content = document.getElementById('page-content');
   if (!content) return;
-  content.classList.add('switching');
-  setTimeout(function() {
-    content.innerHTML = html;
-    content.classList.remove('switching');
-    window.scrollTo(0, 0);
-    setTimeout(function() {
-      var cards = content.querySelectorAll('.stagger-card');
-      for (var i = 0; i < cards.length; i++) {
-        cards[i].style.animationDelay = (i * 0.08) + 's';
-      }
-    }, 50);
-  }, 200);
+  // 立即渲染，不做延迟
+  content.innerHTML = html;
+  window.scrollTo(0, 0);
+  // 触发错落动画
+  var cards = content.querySelectorAll('.stagger-card');
+  for (var i = 0; i < cards.length; i++) {
+    cards[i].style.animationDelay = (i * 0.06) + 's';
+  }
 }
 
 function celebrate() {

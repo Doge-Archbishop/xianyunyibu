@@ -112,10 +112,10 @@ Pages.meihua.result = function() {
     '<span class="plus-sign">+</span>' +
     '<div class="trigram-box lower"><span class="t-label">下卦</span><span class="t-name">' + low.name + '</span><span class="t-symbol">' + low.symbol + '</span><span class="t-wuxing">' + low.wuxing + '</span></div></div>' +
     '<div class="hex-list">' +
-    '<div class="hex-col"><span class="col-title">本卦</span>' + HexagramView.render({ primaryLines: r.primaryHexagram.lines, primaryName: r.primaryHexagram.name }) + '</div>' +
-    '<div class="hex-col"><span class="col-title">互卦</span>' + HexagramView.render({ primaryLines: r.mutualHexagram.lines, primaryName: r.mutualHexagram.name }) + '</div>' +
-    '<div class="hex-col"><span class="col-title">变卦</span>' + HexagramView.render({ primaryLines: r.transformedHexagram.lines, primaryName: r.transformedHexagram.name }) + '</div></div>' +
-    '<div class="tiyong-card ' + relClass + '">' +
+    '<div class="hex-col stagger-card"><span class="col-title">本卦</span>' + HexagramView.render({ primaryLines: r.primaryHexagram.lines, primaryName: r.primaryHexagram.name }) + '</div>' +
+    '<div class="hex-col stagger-card"><span class="col-title">互卦</span>' + HexagramView.render({ primaryLines: r.mutualHexagram.lines, primaryName: r.mutualHexagram.name }) + '</div>' +
+    '<div class="hex-col stagger-card"><span class="col-title">变卦</span>' + HexagramView.render({ primaryLines: r.transformedHexagram.lines, primaryName: r.transformedHexagram.name }) + '</div></div>' +
+    '<div class="tiyong-card ' + relClass + ' stagger-card">' +
     '<span class="card-title">⚖️ 体用生克分析</span>' +
     '<div class="tiyong-row"><div class="tiyong-item"><span class="tiyong-label">体卦（你）</span><span class="tiyong-value">' + r.tiGua + '</span></div>' +
     '<span class="tiyong-arrow">vs</span>' +

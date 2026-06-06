@@ -106,7 +106,7 @@ Pages.zwds.chart = function() {
   }
 
   renderPage('' +
-    '<div class="zwds-chart-page">' +
+    '<div class="zwds-chart-page animate-in">' +
     '<div class="chart-header">' +
     '<span class="chart-birth">' + r.yearGZ.gan + r.yearGZ.zhi + '年 ' + r.monthGZ.gan + r.monthGZ.zhi + '月 ' + r.dayGZ.gan + r.dayGZ.zhi + '日 ' + r.hourGZ.gan + r.hourGZ.zhi + '时</span>' +
     '<span class="chart-label">' + r.wujuName + ' · ' + (r.isShunXing ? '顺行' : '逆行') + '</span>' +

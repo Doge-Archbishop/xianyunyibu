@@ -63,16 +63,16 @@ Pages.bazi.result = function() {
     dyHtml += '<div class="dayun-item' + (dy.isCurrent ? ' current' : '') + '"><span class="dy-age">' + dy.startAge + '岁</span><span class="dy-ganzhi">' + dy.ganzhi.gan + dy.ganzhi.zhi + '</span>' + (dy.isCurrent ? '<span class="dy-current">←当前</span>' : '') + '</div>';
   }
 
-  renderPage('<div class="result-page">' +
+  renderPage('<div class="result-page animate-in">' +
     '<div class="page-title">八字排盘结果</div>' +
-    '<div class="pillars-table"><div class="table-header"><span class="th">时柱</span><span class="th">日柱</span><span class="th">月柱</span><span class="th">年柱</span></div>' +
+    '<div class="pillars-table stagger-card"><div class="table-header"><span class="th">时柱</span><span class="th">日柱</span><span class="th">月柱</span><span class="th">年柱</span></div>' +
     '<div class="table-row gan-row"><span class="td">' + p.hour.gan + '</span><span class="td highlight">' + p.day.gan + '</span><span class="td">' + p.month.gan + '</span><span class="td">' + p.year.gan + '</span></div>' +
     '<div class="table-row zhi-row"><span class="td">' + p.hour.zhi + '</span><span class="td highlight">' + p.day.zhi + '</span><span class="td">' + p.month.zhi + '</span><span class="td">' + p.year.zhi + '</span></div>' +
     '<div class="table-row nayin-row"><span class="td sm">' + r.nayin[3] + '</span><span class="td sm">' + r.nayin[2] + '</span><span class="td sm">' + r.nayin[1] + '</span><span class="td sm">' + r.nayin[0] + '</span></div></div>' +
-    '<div class="daymaster-card"><span class="dm-label">日主（你自己）</span><span class="dm-value">' + r.dayMaster + '（' + r.dayMasterWuxing + '）</span></div>' +
-    '<div class="card"><span class="card-title">🎨 五行分布</span>' + barsHtml + '</div>' +
-    '<div class="card"><span class="card-title">📅 大运</span><div class="dayun-list">' + dyHtml + '</div></div>' +
-    '<button class="btn-primary" onclick="Router.navigate(\'/bazi/analysis\')">查看详细分析</button></div>');
+    '<div class="daymaster-card stagger-card"><span class="dm-label">日主（你自己）</span><span class="dm-value">' + r.dayMaster + '（' + r.dayMasterWuxing + '）</span></div>' +
+    '<div class="card stagger-card"><span class="card-title">🎨 五行分布</span>' + barsHtml + '</div>' +
+    '<div class="card stagger-card"><span class="card-title">📅 大运</span><div class="dayun-list">' + dyHtml + '</div></div>' +
+    '<button class="btn-primary stagger-card" onclick="Router.navigate(\'/bazi/analysis\')">查看详细分析</button></div>');
 };
 
 Pages.bazi.analysis = function() {
@@ -80,15 +80,15 @@ Pages.bazi.analysis = function() {
   if (!r) { Router.navigate('/bazi/input'); return; }
   var interp = r.interpretation;
 
-  renderPage('<div class="analysis-page">' +
+  renderPage('<div class="analysis-page animate-in">' +
     '<div class="page-title">八字详细分析</div>' +
-    '<div class="card"><span class="card-title">🧑 日主分析</span><span class="card-text">' + esc(interp.dayMasterAnalysis) + '</span></div>' +
-    '<div class="card"><span class="card-title">🎨 五行平衡</span><span class="card-text">' + esc(interp.wuxingBalance) + '</span></div>' +
-    '<div class="card"><span class="card-title">💼 事业</span><span class="card-text">' + esc(interp.career) + '</span></div>' +
-    '<div class="card"><span class="card-title">💰 财运</span><span class="card-text">' + esc(interp.wealth) + '</span></div>' +
-    '<div class="card"><span class="card-title">❤️ 感情</span><span class="card-text">' + esc(interp.love) + '</span></div>' +
-    '<div class="card"><span class="card-title">🏥 健康</span><span class="card-text">' + esc(interp.health) + '</span></div>' +
-    '<div class="card highlight"><span class="card-title">📅 当前运势</span><span class="card-text">' + esc(interp.currentYun) + '</span></div>' +
+    '<div class="card stagger-card"><span class="card-title">🧑 日主分析</span><span class="card-text" style="white-space:pre-line">' + esc(interp.dayMasterAnalysis) + '</span></div>' +
+    '<div class="card stagger-card"><span class="card-title">🎨 五行平衡</span><span class="card-text" style="white-space:pre-line">' + esc(interp.wuxingBalance) + '</span></div>' +
+    '<div class="card stagger-card"><span class="card-title">💼 事业</span><span class="card-text">' + esc(interp.career) + '</span></div>' +
+    '<div class="card stagger-card"><span class="card-title">💰 财运</span><span class="card-text">' + esc(interp.wealth) + '</span></div>' +
+    '<div class="card stagger-card"><span class="card-title">❤️ 感情</span><span class="card-text">' + esc(interp.love) + '</span></div>' +
+    '<div class="card stagger-card"><span class="card-title">🏥 健康</span><span class="card-text">' + esc(interp.health) + '</span></div>' +
+    '<div class="card highlight stagger-card"><span class="card-title">📅 当前运势</span><span class="card-text" style="white-space:pre-line">' + esc(interp.currentYun) + '</span></div>' +
     '<button class="btn-outline" onclick="Router.navigate(\'/bazi/result\')">← 返回排盘</button>' +
     '<button class="btn-outline" onclick="Router.navigate(\'/bazi/input\')">🔄 重新排盘</button>' +
     '<div class="disclaimer">以上分析仅供娱乐参考，命运掌握在自己手中</div></div>');
