@@ -4,6 +4,11 @@
 
 var BAGUA_NAMES = ['乾','兑','离','震','巽','坎','艮','坤'];
 
+/** 确保八卦数据已加载 */
+function getBaguaData() {
+  return window._BAGUA || {};
+}
+
 /** 时间起卦 */
 function getNumbersFromTime() {
   var now = new Date();

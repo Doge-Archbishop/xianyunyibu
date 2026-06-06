@@ -2,9 +2,6 @@
  * 六爻占卜服务 (JS 版本)
  */
 
-/** 六十四卦数据（由 data 脚本注入） */
-window._HEXAGRAMS = null;
-
 /** 模拟抛 3 枚硬币 */
 function tossCoins() {
   var coins = [Math.random() > 0.5, Math.random() > 0.5, Math.random() > 0.5];

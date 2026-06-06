@@ -22,29 +22,80 @@ Pages.dailyFortune.draw = function() {
   renderPage('' +
     '<div class="draw-page"><div class="draw-section">' +
     '<div class="draw-header"><span class="draw-icon">🏮</span><span class="draw-title">每日抽签</span><span class="draw-subtitle">诚心祈愿，心诚则灵</span></div>' +
+    '<div class="shrine-area">' +
+    '  <div class="incense-holders">' +
+    '    <span class="incense-stick" id="incense1">🪔</span>' +
+    '    <span class="incense-stick" id="incense2">🪔</span>' +
+    '    <span class="incense-stick" id="incense3">🪔</span>' +
+    '  </div>' +
+    '  <div class="smoke-container" id="smoke-container" style="display:none">' +
+    '    <span class="smoke-particle" id="sp1"></span>' +
+    '    <span class="smoke-particle" id="sp2"></span>' +
+    '    <span class="smoke-particle" id="sp3"></span>' +
+    '    <span class="smoke-particle" id="sp4"></span>' +
+    '    <span class="smoke-particle" id="sp5"></span>' +
+    '  </div>' +
+    '</div>' +
     '<div class="qiantong-area" id="qiantong-area">' +
-    '<div class="qiantong" id="qiantong"><span class="qiantong-icon">🏺</span><div class="stick s1"></div><div class="stick s2"></div><div class="stick s3"></div></div>' +
-    '<span class="draw-hint">点击签筒抽取今日运势签</span><span class="draw-note">每日仅可抽一次</span></div>' +
-    '<div id="loading-area" class="animation-area" style="display:none">' +
-    '<div class="incense-burner"><span class="burner-icon">🪔</span></div>' +
-    '<span class="anim-text" id="loading-text">焚香祈愿中...</span></div></div></div>');
+    '  <div class="qiantong" id="qiantong">' +
+    '    <span class="qiantong-icon">🏺</span>' +
+    '    <div class="sticks-bundle" id="sticks-bundle">' +
+    '      <div class="stick-in-tube" style="transform:rotate(-8deg)"></div>' +
+    '      <div class="stick-in-tube" style="transform:rotate(-3deg)"></div>' +
+    '      <div class="stick-in-tube" style="transform:rotate(0deg)"></div>' +
+    '      <div class="stick-in-tube" style="transform:rotate(3deg)"></div>' +
+    '      <div class="stick-in-tube" style="transform:rotate(7deg)"></div>' +
+    '      <div class="stick-in-tube falling" id="falling-stick"></div>' +
+    '    </div>' +
+    '  </div>' +
+    '  <span class="draw-hint" id="draw-hint">点击签筒抽取今日运势签</span>' +
+    '  <span class="draw-note">每日仅可抽一次</span>' +
+    '</div>' +
+    '<div id="loading-text" class="anim-text" style="display:none"></div></div></div>');
 
   // 绑定抽签事件
   document.getElementById('qiantong-area').onclick = function() {
-    document.getElementById('qiantong-area').style.display = 'none';
-    document.getElementById('loading-area').style.display = 'flex';
+    var qiantong = document.getElementById('qiantong');
+    var hint = document.getElementById('draw-hint');
+    var loadingText = document.getElementById('loading-text');
+    var smoke = document.getElementById('smoke-container');
+    var fallingStick = document.getElementById('falling-stick');
+    var incenseSticks = [
+      document.getElementById('incense1'),
+      document.getElementById('incense2'),
+      document.getElementById('incense3')
+    ];
 
-    setTimeout(function() { document.getElementById('loading-text').textContent = '签筒摇晃中...'; }, 1000);
-    setTimeout(function() { document.getElementById('loading-text').textContent = '一支签正在落下...'; }, 2000);
+    // 阶段1：签筒摇晃 (0-2s)
+    hint.textContent = '签筒摇晃中...';
+    qiantong.classList.add('shaking');
+
+    // 点燃香
+    incenseSticks.forEach(function(s) { s.classList.add('lit'); });
+    smoke.style.display = 'flex';
+
+    // 阶段2：一支签跳出 (2s-3.5s)
     setTimeout(function() {
+      qiantong.classList.remove('shaking');
+      loadingText.style.display = 'block';
+      loadingText.textContent = '一支签正在落下...';
+      fallingStick.classList.add('jumping');
+    }, 1800);
+
+    // 阶段3：展示结果 (3.5s)
+    setTimeout(function() {
+      smoke.style.display = 'none';
+      loadingText.style.display = 'none';
       var fortune = drawFortune();
       if (fortune) {
         saveTodayDraw(fortune);
         App.dailyDrawStatus = 'used';
         App.dailyFortuneToday = fortune;
         Pages.dailyFortune.draw();
+      } else {
+        showToast('抽签失败，请刷新页面重试');
       }
-    }, 3000);
+    }, 3200);
   };
 };
 

@@ -164,19 +164,72 @@ input, select { font-family: inherit; font-size: inherit; outline: none; }
 .draw-icon { font-size: 2rem; display: block; margin-bottom: 6px; }
 .draw-title { font-size: 1.3rem; font-family: 'STSong', serif; color: #8B1A1A; }
 .draw-subtitle { font-size: 0.8rem; color: #A09888; display: block; margin-top: 4px; }
-.qiantong-area { display: flex; flex-direction: column; align-items: center; padding: 32px 0; cursor: pointer; }
-.qiantong { position: relative; margin-bottom: 16px; }
-.qiantong-icon { font-size: 4rem; }
-.stick { position: absolute; width: 3px; height: 40px; background: #C9A96E; border-radius: 2px; top: 16px; }
-.stick.s1 { left: 28px; transform: rotate(-10deg); }
-.stick.s2 { left: 38px; transform: rotate(5deg); }
-.stick.s3 { left: 48px; transform: rotate(-5deg); }
-.draw-hint { font-size: 0.85rem; color: #6B5E4E; }
+/* 签筒与动画 */
+.qiantong-area { display: flex; flex-direction: column; align-items: center; padding: 24px 0; cursor: pointer; }
+.qiantong { position: relative; margin-bottom: 12px; width: 160px; height: 180px; display: flex; align-items: center; justify-content: center; }
+.qiantong-icon { font-size: 5rem; position: relative; z-index: 2; }
+/* 签筒摇晃 */
+.qiantong.shaking { animation: qiantong-shake 0.3s ease-in-out 6; }
+@keyframes qiantong-shake {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(-12deg); }
+  30% { transform: rotate(10deg); }
+  45% { transform: rotate(-8deg); }
+  60% { transform: rotate(6deg); }
+  75% { transform: rotate(-4deg); }
+  90% { transform: rotate(2deg); }
+}
+/* 签筒中的签条 */
+.sticks-bundle { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 60px; height: 80px; z-index: 1; }
+.stick-in-tube {
+  position: absolute; bottom: 0; left: 50%;
+  width: 4px; height: 55px; background: linear-gradient(to top, #C9A96E, #E8D5A3);
+  border-radius: 2px; transform-origin: bottom center;
+}
+.stick-in-tube.falling {
+  height: 45px; bottom: auto; top: -20px; z-index: 3;
+  opacity: 0; transition: none;
+}
+.stick-in-tube.falling.jumping {
+  animation: stick-jump 1.2s ease-out forwards;
+}
+@keyframes stick-jump {
+  0% { opacity: 0; top: 10px; transform: rotate(0deg) translateX(-50%); }
+  15% { opacity: 1; top: -30px; transform: rotate(25deg) translateX(-50%); }
+  30% { top: -60px; transform: rotate(-15deg) translateX(-50%); }
+  50% { top: 20px; transform: rotate(5deg) translateX(-50%); }
+  70% { top: -10px; transform: rotate(-3deg) translateX(-50%); }
+  85% { top: 10px; transform: rotate(1deg) translateX(-50%); }
+  100% { opacity: 1; top: 80px; transform: rotate(0deg) translateX(-50%); }
+}
+.draw-hint { font-size: 0.85rem; color: #6B5E4E; transition: color 0.3s; }
 .draw-note { font-size: 0.7rem; color: #C9A96E; }
-.animation-area { display: flex; flex-direction: column; align-items: center; padding: 40px 0; }
-.incense-burner { position: relative; margin-bottom: 20px; }
-.burner-icon { font-size: 3rem; }
-.anim-text { font-size: 0.85rem; color: #C9A96E; font-family: 'STSong', serif; }
+.anim-text { font-size: 0.95rem; color: #C9A96E; font-family: 'STSong', serif; margin: 8px 0; text-align: center; }
+/* 香炉与烟雾 */
+.shrine-area { position: relative; margin-bottom: 8px; }
+.incense-holders { display: flex; gap: 20px; justify-content: center; margin-bottom: 4px; }
+.incense-stick { font-size: 1.5rem; transition: all 0.6s; opacity: 0.4; }
+.incense-stick.lit { opacity: 1; text-shadow: 0 0 12px rgba(255,140,0,0.8), 0 0 24px rgba(255,100,0,0.4); }
+.smoke-container {
+  display: flex; justify-content: center; gap: 12px;
+  position: absolute; top: -40px; left: 50%; transform: translateX(-50%);
+  width: 160px; height: 40px;
+}
+.smoke-particle {
+  width: 8px; height: 8px; background: rgba(180,160,140,0.4);
+  border-radius: 50%; align-self: flex-end;
+  animation: smoke-float 2s ease-out infinite;
+}
+#sp1 { animation-delay: 0s; width: 10px; height: 10px; }
+#sp2 { animation-delay: 0.4s; width: 7px; height: 7px; }
+#sp3 { animation-delay: 0.8s; width: 12px; height: 12px; }
+#sp4 { animation-delay: 1.2s; width: 6px; height: 6px; }
+#sp5 { animation-delay: 1.6s; width: 9px; height: 9px; }
+@keyframes smoke-float {
+  0% { opacity: 0.6; transform: translateY(0) scale(1); }
+  40% { opacity: 0.4; transform: translateY(-18px) scale(1.6); }
+  100% { opacity: 0; transform: translateY(-36px) scale(2.2); }
+}
 .result-preview, .result-content { width: 100%; }
 .result-header { padding: 32px 16px; text-align: center; color: #fff; }
 .header-emoji { font-size: 2rem; display: block; margin-bottom: 4px; }
@@ -353,8 +406,59 @@ input, select { font-family: inherit; font-size: inherit; outline: none; }
 }
 .notice-icon { font-size: 1.5rem; display: block; margin-bottom: 8px; }
 .notice-text { font-size: 0.8rem; color: #795548; line-height: 1.7; }
-.chart-page { padding: 32px 16px; text-align: center; }
-.notice { font-size: 0.85rem; color: #A09888; }
+
+/* 紫微命盘 */
+.zwds-chart-page { padding: 12px 8px 32px; }
+.chart-header { text-align: center; margin-bottom: 12px; }
+.chart-birth { display: block; font-size: 0.95rem; font-family: 'STSong', serif; color: #2C2C2C; }
+.chart-label { display: block; font-size: 0.75rem; color: #C9A96E; margin-top: 2px; }
+
+.zwds-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr); gap: 4px; max-width: 400px; margin: 0 auto; aspect-ratio: 1; }
+
+.zwds-cell {
+  background: #FDF8F0; border: 1px solid rgba(201,169,110,0.25);
+  border-radius: 6px; padding: 6px 5px; display: flex;
+  flex-direction: column; align-items: center; justify-content: flex-start;
+  min-height: 0; overflow: hidden; cursor: pointer;
+  transition: background 0.15s;
+}
+.zwds-cell:active { background: #F5F0E8; }
+.zwds-cell.ming-gong { border-color: #8B1A1A; border-width: 2px; background: #FEF5F5; }
+.zwds-cell.shen-gong { border-color: #C9A96E; border-width: 2px; }
+.zwds-cell.empty { background: transparent; border: none; }
+.zwds-center { display: flex; align-items: center; justify-content: center; }
+.center-taiji { font-size: 2.5rem; color: #C9A96E; opacity: 0.6; }
+
+.cell-header { display: flex; align-items: center; gap: 4px; margin-bottom: 1px; width: 100%; }
+.cell-palace-name { font-size: 0.75rem; font-weight: bold; color: #8B1A1A; }
+.cell-marker { font-size: 0.55rem; background: #C62828; color: #fff; padding: 0px 3px; border-radius: 2px; }
+.cell-stems { font-size: 0.6rem; color: #6B5E4E; margin-bottom: 2px; }
+.cell-stars { display: flex; flex-wrap: wrap; gap: 2px; justify-content: center; }
+.cell-stars .star { font-size: 0.58rem; padding: 1px 3px; background: rgba(139,26,26,0.08); border-radius: 2px; color: #6B1010; }
+.cell-stars .star.assist { font-size: 0.5rem; background: rgba(201,169,110,0.1); color: #8B7530; }
+.cell-stars .sihua-化禄 { background: rgba(76,175,80,0.15); color: #2E7D32; font-weight: bold; }
+.cell-stars .sihua-化权 { background: rgba(33,150,243,0.15); color: #1565C0; font-weight: bold; }
+.cell-stars .sihua-化科 { background: rgba(156,39,176,0.15); color: #7B1FA2; font-weight: bold; }
+.cell-stars .sihua-化忌 { background: rgba(244,67,54,0.15); color: #C62828; font-weight: bold; }
+.cell-daxian { font-size: 0.55rem; color: #A09888; margin-top: 2px; }
+
+.chart-legend { display: flex; justify-content: center; gap: 16px; margin: 12px 0; }
+.legend-item { display: flex; align-items: center; gap: 4px; font-size: 0.7rem; color: #6B5E4E; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+.legend-dot.hl { background: #4CAF50; }
+.legend-dot.hq { background: #2196F3; }
+.legend-dot.hk { background: #9C27B0; }
+.legend-dot.hj { background: #F44336; }
+
+/* 宫位详解 */
+.palace-detail-page { padding: 16px 16px 32px; }
+.pd-header { text-align: center; margin-bottom: 16px; }
+.pd-palace-name { font-size: 1.3rem; font-family: 'STSong', serif; color: #8B1A1A; display: block; }
+.pd-stems { font-size: 0.85rem; color: #C9A96E; }
+.pd-sihua { text-align: center; font-size: 0.9rem; color: #C62828; font-weight: bold; margin-bottom: 12px; }
+.star-detail-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(201,169,110,0.1); }
+.sd-name { font-size: 0.85rem; color: #2C2C2C; }
+.sd-type { font-size: 0.7rem; color: #A09888; }
 
 /* ═══ 占卜页 ═══ */
 .divine-page { padding: 16px 16px 32px; }

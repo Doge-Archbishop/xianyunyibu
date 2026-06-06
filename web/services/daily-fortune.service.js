@@ -2,9 +2,6 @@
  * 每日抽签服务 (JS 版本)
  */
 
-/** 签文数据（由 data 脚本注入全局变量） */
-window._FORTUNES = null;
-
 /** 随机抽签 */
 window.drawFortune = function() {
   var fortunes = window._FORTUNES || [];
