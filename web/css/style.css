@@ -238,16 +238,78 @@ input, select { font-family: inherit; font-size: inherit; outline: none; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 铜钱轻弹动画（柔和版） */
+/* 铜钱抛掷动画 */
 .toss-btn { transition: transform 0.15s, box-shadow 0.2s; }
 .toss-btn-icon { font-size: 2rem; display: block; margin-bottom: 4px; transition: transform 0.3s; }
-.toss-btn.tossing { transform: scale(0.94); box-shadow: 0 0 18px rgba(201,169,110,0.5); }
-.toss-btn.tossing .toss-btn-icon { animation: coin-bounce 0.4s ease-out; }
+.toss-btn.tossing { transform: scale(0.9); box-shadow: 0 0 24px rgba(201,169,110,0.7), 0 0 48px rgba(255,180,0,0.3); }
+.toss-btn.tossing .toss-btn-icon { animation: coin-bounce 0.5s ease-out; }
+.toss-btn::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,215,0,0.4), transparent 70%);
+  opacity: 0; transition: opacity 0.2s;
+}
+.toss-btn.tossing::after { opacity: 1; animation: ring-expand 0.5s ease-out; }
 @keyframes coin-bounce {
-  0% { transform: translateY(0); }
-  30% { transform: translateY(-12px); }
-  60% { transform: translateY(-4px); }
-  100% { transform: translateY(0); }
+  0% { transform: translateY(0) rotate(0deg); }
+  20% { transform: translateY(-16px) rotate(15deg); }
+  40% { transform: translateY(-20px) rotate(-10deg); }
+  60% { transform: translateY(-8px) rotate(5deg); }
+  80% { transform: translateY(-2px) rotate(-2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+@keyframes ring-expand {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+/* 抛硬币粒子效果 */
+.coin-spark {
+  position: fixed; pointer-events: none; z-index: 999;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: #FFD700;
+  animation: spark-fly 0.6s ease-out forwards;
+}
+@keyframes spark-fly {
+  0% { opacity: 1; transform: translate(0,0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--sx),var(--sy)) scale(0); }
+}
+
+/* 五行柱状图逐个填充 */
+.wuxing-bar .bar-fill { transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.wuxing-bar:nth-child(1) .bar-fill { transition-delay: 0.1s; }
+.wuxing-bar:nth-child(2) .bar-fill { transition-delay: 0.25s; }
+.wuxing-bar:nth-child(3) .bar-fill { transition-delay: 0.4s; }
+.wuxing-bar:nth-child(4) .bar-fill { transition-delay: 0.55s; }
+.wuxing-bar:nth-child(5) .bar-fill { transition-delay: 0.7s; }
+
+/* 紫微星曜逐个亮起 */
+.zwds-cell { transition: opacity 0.3s, transform 0.3s; }
+.zwds-grid.revealing .zwds-cell {
+  opacity: 0; transform: scale(0.9);
+  animation: cell-reveal 0.4s ease-out forwards;
+}
+.zwds-grid.revealing .zwds-cell:nth-child(1) { animation-delay: 0.05s; }
+.zwds-grid.revealing .zwds-cell:nth-child(2) { animation-delay: 0.1s; }
+.zwds-grid.revealing .zwds-cell:nth-child(3) { animation-delay: 0.15s; }
+.zwds-grid.revealing .zwds-cell:nth-child(4) { animation-delay: 0.2s; }
+@keyframes cell-reveal {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* 按钮粒子（八字排盘、梅花起卦等） */
+.btn-sparkle {
+  position: relative; overflow: visible !important;
+}
+.btn-sparkle::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 0; height: 0; border-radius: 50%;
+  background: rgba(255,215,0,0.5);
+  transform: translate(-50%, -50%);
+  animation: btn-glow-pulse 1.5s ease-out infinite;
+}
+@keyframes btn-glow-pulse {
+  0% { width: 0; height: 0; opacity: 0.8; }
+  100% { width: 120px; height: 120px; opacity: 0; }
 }
 
 /* 进度点脉冲 */

@@ -111,7 +111,7 @@ Pages.zwds.chart = function() {
     '<span class="chart-birth">' + r.yearGZ.gan + r.yearGZ.zhi + '年 ' + r.monthGZ.gan + r.monthGZ.zhi + '月 ' + r.dayGZ.gan + r.dayGZ.zhi + '日 ' + r.hourGZ.gan + r.hourGZ.zhi + '时</span>' +
     '<span class="chart-label">' + r.wujuName + ' · ' + (r.isShunXing ? '顺行' : '逆行') + '</span>' +
     '</div>' +
-    '<div class="zwds-grid">' + cellsHtml + '</div>' +
+    '<div class="zwds-grid" id="zwds-grid">' + cellsHtml + '</div>' +
     '<div class="chart-legend">' +
     '<span class="legend-item"><span class="legend-dot hl"></span>化禄</span>' +
     '<span class="legend-item"><span class="legend-dot hq"></span>化权</span>' +
@@ -119,6 +119,12 @@ Pages.zwds.chart = function() {
     '<span class="legend-item"><span class="legend-dot hj"></span>化忌</span>' +
     '</div>' +
     '<div class="disclaimer">以上命盘仅供娱乐参考</div></div>');
+
+  // 触发星曜逐个亮起动画
+  setTimeout(function() {
+    var grid = document.getElementById('zwds-grid');
+    if (grid) grid.classList.add('revealing');
+  }, 100);
 };
 
 /** 单宫详解 */

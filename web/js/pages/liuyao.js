@@ -68,7 +68,9 @@ function doTossCoins() {
   var btn = document.getElementById('toss-btn');
   if (btn) {
     btn.classList.add('tossing');
-    setTimeout(function() { btn.classList.remove('tossing'); }, 600);
+    // 粒子效果
+    spawnCoinSparks(btn);
+    setTimeout(function() { btn.classList.remove('tossing'); }, 500);
   }
 
   // 三枚铜钱结果
@@ -85,6 +87,23 @@ function doTossCoins() {
   if (d.currentRound >= 6) d.isComplete = true;
 
   _renderTossPage();
+}
+
+function spawnCoinSparks(btn) {
+  var rect = btn.getBoundingClientRect();
+  var cx = rect.left + rect.width / 2;
+  var cy = rect.top + rect.height / 2;
+  for (var i = 0; i < 8; i++) {
+    var spark = document.createElement('div');
+    spark.className = 'coin-spark';
+    spark.style.left = cx + 'px';
+    spark.style.top = cy + 'px';
+    spark.style.setProperty('--sx', (Math.random() - 0.5) * 60 + 'px');
+    spark.style.setProperty('--sy', (Math.random() - 0.5) * 60 + 'px');
+    spark.style.animationDelay = Math.random() * 0.2 + 's';
+    document.body.appendChild(spark);
+    setTimeout(function() { spark.remove(); }, 800);
+  }
 }
 
 /** 查看结果 — 使用用户实际摇出的爻 */
