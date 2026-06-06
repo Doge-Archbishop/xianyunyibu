@@ -1,3 +1,4 @@
+var Pages = Pages || {};
 /**
  * 八字页面
  */

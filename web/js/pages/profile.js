@@ -1,3 +1,4 @@
+var Pages = Pages || {};
 /**
  * 个人中心
  */

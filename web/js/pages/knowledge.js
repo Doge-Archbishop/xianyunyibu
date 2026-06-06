@@ -1,6 +1,7 @@
 /**
  * 知识库页面
  */
+var Pages = Pages || {};
 Pages.knowledge = function() {
   renderPage('' +
     '<div class="detail-page animate-in">' +

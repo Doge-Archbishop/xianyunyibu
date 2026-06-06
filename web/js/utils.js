@@ -2,88 +2,100 @@
  * 闲云一卜 — 通用工具函数
  */
 
-// ═══ Storage ═══
-const Storage = {
-  get(key, defaultValue = null) {
+var Storage = {
+  get: function(key, defaultValue) {
+    if (defaultValue === undefined) defaultValue = null;
     try {
-      const val = localStorage.getItem(key);
+      var val = localStorage.getItem(key);
       return val ? JSON.parse(val) : defaultValue;
-    } catch { return defaultValue; }
+    } catch(e) { return defaultValue; }
   },
-  set(key, value) {
+  set: function(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
   },
-  remove(key) {
+  remove: function(key) {
     localStorage.removeItem(key);
   }
 };
 
-// ═══ Toast ═══
-function showToast(msg, duration = 2000) {
-  const toast = document.getElementById('toast');
+function showToast(msg, duration) {
+  if (!duration) duration = 2000;
+  var toast = document.getElementById('toast');
+  if (!toast) return;
   toast.textContent = msg;
   toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), duration);
+  setTimeout(function() { toast.classList.remove('show'); }, duration);
 }
 
-// ═══ Modal ═══
-function showModal({ title, content, onConfirm, onCancel, confirmText = '确定', cancelText = '取消' }) {
-  const modal = document.getElementById('modal');
+function showModal(opts) {
+  var title = opts.title || '';
+  var content = opts.content || '';
+  var onConfirm = opts.onConfirm;
+  var onCancel = opts.onCancel;
+  var confirmText = opts.confirmText || '确定';
+  var cancelText = opts.cancelText || '取消';
+
+  var modal = document.getElementById('modal');
+  if (!modal) return;
   document.getElementById('modal-title').textContent = title;
   document.getElementById('modal-body').textContent = content;
   document.getElementById('modal-confirm').textContent = confirmText;
   document.getElementById('modal-cancel').textContent = cancelText;
-
   modal.style.display = 'flex';
 
-  const close = () => { modal.style.display = 'none'; };
+  function close() { modal.style.display = 'none'; }
 
-  document.getElementById('modal-confirm').onclick = () => { close(); if (onConfirm) onConfirm(); };
-  document.getElementById('modal-cancel').onclick = () => { close(); if (onCancel) onCancel(); };
+  document.getElementById('modal-confirm').onclick = function() { close(); if (onConfirm) onConfirm(); };
+  document.getElementById('modal-cancel').onclick = function() { close(); if (onCancel) onCancel(); };
 }
 
-// ═══ 日期工具 ═══
 function getTodayStr() {
-  const now = new Date();
-  const y = now.getFullYear();
-  const m = String(now.getMonth() + 1).padStart(2, '0');
-  const d = String(now.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
+  var now = new Date();
+  var y = now.getFullYear();
+  var m = String(now.getMonth() + 1);
+  if (m.length < 2) m = '0' + m;
+  var d = String(now.getDate());
+  if (d.length < 2) d = '0' + d;
+  return y + '-' + m + '-' + d;
 }
 
 function formatTime(ts) {
-  const d = new Date(ts);
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  const h = String(d.getHours()).padStart(2, '0');
-  const min = String(d.getMinutes()).padStart(2, '0');
-  return `${m}-${day} ${h}:${min}`;
+  var d = new Date(ts);
+  var m = String(d.getMonth() + 1);
+  if (m.length < 2) m = '0' + m;
+  var day = String(d.getDate());
+  if (day.length < 2) day = '0' + day;
+  var h = String(d.getHours());
+  if (h.length < 2) h = '0' + h;
+  var min = String(d.getMinutes());
+  if (min.length < 2) min = '0' + min;
+  return m + '-' + day + ' ' + h + ':' + min;
 }
 
-// ═══ HTML 转义 ═══
 function esc(str) {
-  const div = document.createElement('div');
+  if (!str) return '';
+  var div = document.createElement('div');
   div.textContent = str;
   return div.innerHTML;
 }
 
-// ═══ 渲染页面（带过渡动画） ═══
 function renderPage(html) {
   var content = document.getElementById('page-content');
+  if (!content) return;
   content.classList.add('switching');
   setTimeout(function() {
     content.innerHTML = html;
     content.classList.remove('switching');
     window.scrollTo(0, 0);
-    // 触发错落动画
     setTimeout(function() {
       var cards = content.querySelectorAll('.stagger-card');
-      cards.forEach(function(c, i) { c.style.animationDelay = (i * 0.08) + 's'; });
+      for (var i = 0; i < cards.length; i++) {
+        cards[i].style.animationDelay = (i * 0.08) + 's';
+      }
     }, 50);
   }, 200);
 }
 
-// ═══ 撒花庆祝（上上签/大吉时触发） ═══
 function celebrate() {
   var container = document.createElement('div');
   container.className = 'confetti-container';
@@ -104,9 +116,11 @@ function celebrate() {
   setTimeout(function() { container.remove(); }, 4000);
 }
 
-// ═══ 高亮当前 tab ═══
 function setActiveTab(tab) {
-  document.querySelectorAll('#tab-bar .tab-item').forEach(el => el.classList.remove('active'));
-  const el = document.querySelector(`[data-tab="${tab}"]`);
+  var items = document.querySelectorAll('#tab-bar .tab-item');
+  for (var i = 0; i < items.length; i++) {
+    items[i].classList.remove('active');
+  }
+  var el = document.querySelector('[data-tab="' + tab + '"]');
   if (el) el.classList.add('active');
 }

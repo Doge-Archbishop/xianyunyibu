@@ -64,6 +64,7 @@ var App = {
 
   /** 添加深色模式按钮 */
   addDarkToggle: function() {
+    if (!document.body) return;
     var btn = document.createElement('button');
     btn.className = 'dark-toggle';
     btn.textContent = this.darkMode ? '☀️' : '🌙';
