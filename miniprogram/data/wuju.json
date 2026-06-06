@@ -1,0 +1,7 @@
+{
+  "水二局": { "name": "水二局", "wuxing": "水", "number": 2, "description": "命宫干支纳音属水" },
+  "木三局": { "name": "木三局", "wuxing": "木", "number": 3, "description": "命宫干支纳音属木" },
+  "金四局": { "name": "金四局", "wuxing": "金", "number": 4, "description": "命宫干支纳音属金" },
+  "土五局": { "name": "土五局", "wuxing": "土", "number": 5, "description": "命宫干支纳音属土" },
+  "火六局": { "name": "火六局", "wuxing": "火", "number": 6, "description": "命宫干支纳音属火" }
+}

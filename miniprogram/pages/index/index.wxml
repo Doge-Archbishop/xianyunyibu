@@ -1,0 +1,73 @@
+<!-- 首页 -->
+<view class="index-page">
+
+  <!-- 顶部区域：每日运势卡片 -->
+  <view class="daily-section">
+    <view class="daily-card {{ dailyFortuneStatus }}" bindtap="onDailyFortuneTap">
+      <view class="daily-header">
+        <text class="daily-icon">🏮</text>
+        <text class="daily-title">今日运势</text>
+        <text class="daily-date">{{ currentDate }}</text>
+      </view>
+
+      <view wx:if="{{ dailyFortuneStatus === 'loading' }}" class="daily-body">
+        <text class="daily-hint">正在感应天地气数...</text>
+      </view>
+
+      <view wx:elif="{{ dailyFortuneStatus === 'available' }}" class="daily-body">
+        <text class="daily-hint">今日尚未抽签</text>
+        <view class="daily-action">
+          <text>点击抽取今日运势签 →</text>
+        </view>
+      </view>
+
+      <view wx:else class="daily-body used">
+        <view class="daily-fortune-preview">
+          <text class="fortune-level">{{ todayFortune.level }}</text>
+          <text class="fortune-title">{{ todayFortune.title }}</text>
+        </view>
+        <text class="daily-hint">今日已抽签，点击查看详情</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能导航网格 -->
+  <view class="modules-section">
+    <view class="section-title">
+      <text class="title-text">占卜之法</text>
+      <text class="title-desc">— 五术 —</text>
+    </view>
+
+    <view class="modules-grid">
+      <view
+        wx:for="{{ fortuneModules }}"
+        wx:key="id"
+        class="module-card"
+        style="border-top-color: {{ item.color }}"
+        bindtap="onModuleTap"
+        data-url="{{ item.url }}"
+      >
+        <view class="module-icon-wrap" style="background-color: {{ item.color }}20">
+          <text class="module-icon">{{ item.icon }}</text>
+        </view>
+        <text class="module-name">{{ item.name }}</text>
+        <text class="module-subtitle">{{ item.subtitle }}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 道家小知识 -->
+  <view class="tip-section">
+    <view class="tip-card">
+      <view class="tip-header">
+        <text class="tip-label">📖 道学小识</text>
+        <text class="tip-refresh" bindtap="onRefreshTip">换一条 ↻</text>
+      </view>
+      <text class="tip-title">{{ taoistTip.title }}</text>
+      <text class="tip-content">{{ taoistTip.content }}</text>
+    </view>
+  </view>
+
+  <!-- 免责声明 -->
+  <view class="disclaimer">{{ disclaimer }}</view>
+</view>

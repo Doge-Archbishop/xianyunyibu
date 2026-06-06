@@ -1,0 +1,22 @@
+<!-- 道家风格加载动画 -->
+<view class="dao-loading">
+  <!-- 旋转太极图 -->
+  <view class="taiji-wrap {{ isAnimating ? 'spinning' : '' }}">
+    <view class="taiji">
+      <view class="taiji-half white"></view>
+      <view class="taiji-half black"></view>
+      <view class="taiji-dot white-dot"></view>
+      <view class="taiji-dot black-dot"></view>
+    </view>
+  </view>
+
+  <!-- 香炉烟效果 -->
+  <view class="incense">
+    <view class="smoke smoke-1"></view>
+    <view class="smoke smoke-2"></view>
+    <view class="smoke smoke-3"></view>
+  </view>
+
+  <!-- 加载文案 -->
+  <text class="loading-text">{{ text }}</text>
+</view>

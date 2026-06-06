@@ -1,0 +1,62 @@
+<view class="result-page" wx:if="{{ result }}">
+  <view class="page-title">梅花易数 — 卦象</view>
+
+  <!-- 起卦数字 -->
+  <view class="numbers-row">
+    <text class="num-label">起数：</text>
+    <text class="num-value">{{ result.numbers[0] }} · {{ result.numbers[1] }} · {{ result.numbers[2] }}</text>
+  </view>
+
+  <!-- 八卦简示 -->
+  <view class="trigrams-row">
+    <view class="trigram-box">
+      <text class="t-label">上卦</text>
+      <text class="t-name">{{ result.upperTrigram.name }}</text>
+      <text class="t-symbol">{{ result.upperTrigram.symbol }}</text>
+      <text class="t-wuxing">{{ result.upperTrigram.wuxing }}</text>
+    </view>
+    <text class="plus-sign">+</text>
+    <view class="trigram-box">
+      <text class="t-label">下卦</text>
+      <text class="t-name">{{ result.lowerTrigram.name }}</text>
+      <text class="t-symbol">{{ result.lowerTrigram.symbol }}</text>
+      <text class="t-wuxing">{{ result.lowerTrigram.wuxing }}</text>
+    </view>
+  </view>
+
+  <!-- 三卦并排 -->
+  <view class="three-hexagrams">
+    <view class="hex-col">
+      <text class="col-title">本卦</text>
+      <hexagram-view primaryLines="{{ result.primaryHexagram.lines }}" primaryName="{{ result.primaryHexagram.name }}" showLiuQin="{{ false }}" showShiYing="{{ false }}" />
+    </view>
+    <view class="hex-col">
+      <text class="col-title">互卦</text>
+      <hexagram-view primaryLines="{{ result.mutualHexagram.lines }}" primaryName="{{ result.mutualHexagram.name }}" showLiuQin="{{ false }}" showShiYing="{{ false }}" />
+    </view>
+    <view class="hex-col">
+      <text class="col-title">变卦</text>
+      <hexagram-view primaryLines="{{ result.transformedHexagram.lines }}" primaryName="{{ result.transformedHexagram.name }}" showLiuQin="{{ false }}" showShiYing="{{ false }}" />
+    </view>
+  </view>
+
+  <!-- 体用分析 -->
+  <view class="tiyong-card">
+    <text class="card-title">⚖️ 体用分析</text>
+    <view class="tiyong-row">
+      <view class="tiyong-item">
+        <text class="tiyong-label">体卦（你）</text>
+        <text class="tiyong-value">{{ result.tiGua }}（{{ result.upperTrigram.wuxing === result.lowerTrigram.wuxing ? result.upperTrigram.wuxing : '' }}）</text>
+      </view>
+      <text class="tiyong-arrow">vs</text>
+      <view class="tiyong-item">
+        <text class="tiyong-label">用卦（事）</text>
+        <text class="tiyong-value">{{ result.yongGua }}</text>
+      </view>
+    </view>
+    <text class="tiyong-relation">{{ result.tiYongRelation }}</text>
+    <text class="tiyong-analysis">{{ result.interpretation.tiYongAnalysis }}</text>
+  </view>
+
+  <button class="dao-btn-primary" bindtap="onViewDetail">查看详细解读</button>
+</view>

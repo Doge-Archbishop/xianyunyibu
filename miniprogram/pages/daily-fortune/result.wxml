@@ -1,0 +1,72 @@
+<!-- 每日抽签结果详情页 -->
+<view class="result-page">
+
+  <view wx:if="{{ !isEmpty && fortune }}" class="result-content">
+    <!-- 签文头部 -->
+    <view class="result-header" style="background: linear-gradient(135deg, {{ levelColor }}, {{ levelColor }}88)">
+      <text class="header-emoji">{{ levelEmoji }}</text>
+      <text class="header-level">{{ fortune.level }}</text>
+      <text class="header-title">{{ fortune.title }}</text>
+    </view>
+
+    <!-- 签诗 -->
+    <view class="poem-section card">
+      <text class="section-label">📜 签诗</text>
+      <text class="poem-text">{{ fortune.poem }}</text>
+    </view>
+
+    <!-- 现代解读 -->
+    <view class="modern-section">
+      <view class="section-title">📖 现代解读</view>
+
+      <view class="interpret-item">
+        <text class="item-label">📋 总览</text>
+        <text class="item-text">{{ fortune.modern.summary }}</text>
+      </view>
+
+      <view class="interpret-grid">
+        <view class="inter-item">
+          <text class="item-label">💼 事业</text>
+          <text class="item-text">{{ fortune.modern.career }}</text>
+        </view>
+        <view class="inter-item">
+          <text class="item-label">💰 财运</text>
+          <text class="item-text">{{ fortune.modern.wealth }}</text>
+        </view>
+        <view class="inter-item">
+          <text class="item-label">❤️ 感情</text>
+          <text class="item-text">{{ fortune.modern.love }}</text>
+        </view>
+        <view class="inter-item">
+          <text class="item-label">🏥 健康</text>
+          <text class="item-text">{{ fortune.modern.health }}</text>
+        </view>
+      </view>
+
+      <view class="advice-item">
+        <text class="item-label">💡 建议</text>
+        <text class="item-text advice-text">{{ fortune.modern.advice }}</text>
+      </view>
+    </view>
+
+    <!-- 解曰 -->
+    <view class="card explanation-section">
+      <text class="section-label">🔍 解曰</text>
+      <text class="explanation-text">{{ fortune.explanation }}</text>
+    </view>
+
+    <view class="actions">
+      <button class="dao-btn-outline" open-type="share">分享今日运势</button>
+      <button class="dao-btn-outline" bindtap="onGoDraw">返回</button>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:else class="empty-state">
+    <text class="empty-icon">🏮</text>
+    <text class="empty-title">今日尚未抽签</text>
+    <button class="dao-btn-primary" bindtap="onGoDraw">去抽签</button>
+  </view>
+
+  <view class="disclaimer">仅供娱乐参考，命运掌握在自己手中</view>
+</view>

@@ -1,0 +1,93 @@
+<!-- 六爻摇卦页面 -->
+<view class="liuyao-page">
+
+  <!-- 步骤0：准备引导 -->
+  <view wx:if="{{ guideStep === 0 }}" class="guide-section">
+    <view class="guide-icon">☯</view>
+    <text class="guide-title">六爻占卜</text>
+    <text class="guide-desc">通过抛掷三枚铜钱六次，得到卦象来占断吉凶。</text>
+    <view class="guide-steps">
+      <view class="guide-step">
+        <text class="step-num">1</text>
+        <text class="step-text">心中默念你要问的问题</text>
+      </view>
+      <view class="guide-step">
+        <text class="step-num">2</text>
+        <text class="step-text">静心屏息，心无杂念</text>
+      </view>
+      <view class="guide-step">
+        <text class="step-num">3</text>
+        <text class="step-text">点击按钮抛三枚铜钱，共六次</text>
+      </view>
+      <view class="guide-step">
+        <text class="step-num">4</text>
+        <text class="step-text">从下往上，初爻到上爻，依次排列</text>
+      </view>
+    </view>
+    <button class="dao-btn-primary" bindtap="onStartToss">开始摇卦</button>
+  </view>
+
+  <!-- 步骤1：抛硬币 -->
+  <view wx:else class="toss-section">
+    <!-- 进度条 -->
+    <view class="progress-bar">
+      <view
+        wx:for="{{ [1,2,3,4,5,6] }}"
+        wx:key="*this"
+        class="progress-dot {{ currentRound >= item ? 'filled' : '' }} {{ item === currentRound + 1 ? 'current' : '' }}"
+      >
+        <text class="dot-text">{{ item }}</text>
+      </view>
+    </view>
+
+    <!-- 抛硬币区域 -->
+    <view wx:if="{{ !isComplete }}" class="toss-area">
+      <!-- 当前结果 -->
+      <view wx:if="{{ lastResult }}" class="last-result">
+        <text class="result-round">第 {{ lastResult.round }} 次</text>
+        <view class="result-coins">
+          <text class="coin-face">{{ lastResult.faces[0] === '正面' ? '🪙' : '🪙' }}</text>
+          <text class="coin-face">{{ lastResult.faces[1] === '正面' ? '🪙' : '🪙' }}</text>
+          <text class="coin-face">{{ lastResult.faces[2] === '正面' ? '🪙' : '🪙' }}</text>
+        </view>
+        <text class="result-yao {{ lastResult.isChanging ? 'changing' : '' }}">
+          {{ lastResult.yaoType }}
+        </text>
+        <text wx:if="{{ lastResult.isChanging }}" class="changing-note">变动爻，将发生变化</text>
+      </view>
+
+      <!-- 抛硬币按钮 -->
+      <view class="toss-btn {{ coinAnimating ? 'animating' : '' }}" bindtap="onTossCoins">
+        <text class="toss-btn-text">
+          {{ currentRound === 0 ? '抛第一次' : '抛第' + (currentRound + 1) + '次' }}
+        </text>
+        <text class="toss-hint">点击抛三枚铜钱</text>
+      </view>
+    </view>
+
+    <!-- 已完成的爻列表 -->
+    <view class="yao-history" wx:if="{{ tosses.length > 0 }}">
+      <text class="history-title">已摇的爻（从下往上）</text>
+      <view class="history-list">
+        <view
+          wx:for="{{ tosses }}"
+          wx:key="round"
+          class="history-item"
+        >
+          <text class="history-round">第{{ item.round }}爻</text>
+          <text class="history-yao {{ item.isChanging ? 'changing' : '' }}">{{ item.yaoType }}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 完成按钮 -->
+    <view wx:if="{{ isComplete }}" class="complete-section">
+      <text class="complete-icon">✅</text>
+      <text class="complete-text">六爻已成，请查看卦象</text>
+      <button class="dao-btn-primary" bindtap="onViewResult">查看卦象结果</button>
+      <button class="dao-btn-outline" bindtap="onRetry">重新摇卦</button>
+    </view>
+  </view>
+
+  <view class="disclaimer">仅供娱乐参考</view>
+</view>

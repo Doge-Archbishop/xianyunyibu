@@ -1,0 +1,149 @@
+/**
+ * 占卜页样式
+ */
+
+.divine-page {
+  min-height: 100vh;
+  padding: 24rpx 32rpx 60rpx;
+}
+
+// ═══ 空状态 ═══
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 160rpx;
+}
+
+.empty-icon {
+  font-size: 80rpx;
+  margin-bottom: 24rpx;
+}
+
+.empty-title {
+  font-size: 32rpx;
+  color: #6B5E4E;
+  font-weight: 600;
+  margin-bottom: 12rpx;
+}
+
+.empty-desc {
+  font-size: 26rpx;
+  color: #A09888;
+  text-align: center;
+  line-height: 1.8;
+  padding: 0 40rpx;
+}
+
+// ═══ 历史列表 ═══
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.header-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2C2C2C;
+}
+
+.header-count {
+  font-size: 24rpx;
+  color: #A09888;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  background: #FDF8F0;
+  border-radius: 12rpx;
+  padding: 20rpx 24rpx;
+  margin-bottom: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(139, 26, 26, 0.04);
+
+  &:active {
+    background: #F5F0E8;
+  }
+}
+
+.item-icon {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+  width: 56rpx;
+  text-align: center;
+}
+
+.item-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rpx;
+}
+
+.item-module {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #8B1A1A;
+}
+
+.item-time {
+  font-size: 22rpx;
+  color: #A09888;
+}
+
+.item-summary {
+  font-size: 24rpx;
+  color: #6B5E4E;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.item-arrow {
+  font-size: 32rpx;
+  color: #C9A96E;
+  margin-left: 8rpx;
+}
+
+// ═══ 快速入口 ═══
+.quick-section {
+  margin-top: 32rpx;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16rpx;
+}
+
+.quick-item {
+  background: #FDF8F0;
+  border-radius: 12rpx;
+  padding: 24rpx 8rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx rgba(139, 26, 26, 0.04);
+
+  &:active {
+    background: #F5F0E8;
+  }
+}
+
+.quick-icon {
+  font-size: 40rpx;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.quick-name {
+  font-size: 24rpx;
+  color: #6B5E4E;
+}

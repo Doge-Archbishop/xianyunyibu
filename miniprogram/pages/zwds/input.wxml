@@ -1,0 +1,41 @@
+<view class="zwds-page">
+  <view class="page-header">
+    <text class="page-icon">🌟</text>
+    <text class="page-title">紫微斗数</text>
+    <text class="page-desc">群星列宿，天命有数。根据出生时间排布十二宫星盘。</text>
+  </view>
+
+  <view class="form-section">
+    <view class="form-group">
+      <text class="form-label">出生日期（阳历）</text>
+      <picker mode="date" value="{{ birthDate }}" start="1900-01-01" end="2100-12-31" bindchange="onDateChange">
+        <view class="form-picker">{{ birthDate }}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">出生时间：{{ birthHour }}:{{ birthMinute < 10 ? '0' + birthMinute : birthMinute }}</text>
+      <slider min="0" max="23" value="{{ birthHour }}" bindchange="onHourChange" show-value block-color="#8B1A1A" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">分钟</text>
+      <slider min="0" max="59" value="{{ birthMinute }}" bindchange="onMinuteChange" show-value block-color="#C9A96E" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">性别</text>
+      <view class="gender-tabs">
+        <view class="gender-tab {{ gender === '男' ? 'active' : '' }}" bindtap="onGenderChange" data-gender="男">男</view>
+        <view class="gender-tab {{ gender === '女' ? 'active' : '' }}" bindtap="onGenderChange" data-gender="女">女</view>
+      </view>
+    </view>
+  </view>
+
+  <button class="dao-btn-primary" bindtap="onCalculate" style="margin-top:32rpx">排紫微命盘</button>
+
+  <view class="notice-card">
+    <text class="notice-icon">🚧</text>
+    <text class="notice-text">紫微斗数是本程序最复杂的模块，正在紧张开发中。目前已完成八字、六爻、梅花易数和每日抽签功能。</text>
+  </view>
+</view>

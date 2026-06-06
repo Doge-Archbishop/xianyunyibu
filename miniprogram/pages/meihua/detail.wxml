@@ -1,0 +1,47 @@
+<view class="detail-page" wx:if="{{ result }}">
+  <view class="page-title">梅花易数 — 详解</view>
+
+  <view class="card">
+    <text class="card-title">📖 本卦</text>
+    <text class="card-subtitle">{{ result.primaryHexagram.name }}</text>
+    <text class="card-text">{{ result.interpretation.primaryMeaning }}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">🔄 互卦</text>
+    <text class="card-subtitle">{{ result.mutualHexagram.name }}</text>
+    <text class="card-text">{{ result.interpretation.mutualMeaning }}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">🔮 变卦</text>
+    <text class="card-subtitle">{{ result.transformedHexagram.name }}</text>
+    <text class="card-text">{{ result.interpretation.transformedMeaning }}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">⚡ 动爻（第{{ result.changingLine }}爻）</text>
+    <text class="card-text">{{ result.interpretation.lineMeaning }}</text>
+  </view>
+
+  <view class="card highlight">
+    <text class="card-title">⚖️ 体用生克判断</text>
+    <text class="card-text">{{ result.interpretation.tiYongAnalysis }}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">💡 综合建议</text>
+    <text class="card-text advice">{{ result.interpretation.advice }}</text>
+  </view>
+
+  <view class="glossary">
+    <text class="g-title">📚 体用生克解释</text>
+    <text class="g-text">体卦 = 代表你自己</text>
+    <text class="g-text">用卦 = 代表你问的事情</text>
+    <text class="g-text">体克用 = 你能驾驭事情（吉，需努力）</text>
+    <text class="g-text">用克体 = 事情对你不利（凶，需谨慎）</text>
+    <text class="g-text">体生用 = 你消耗自己成全事情（泄）</text>
+    <text class="g-text">用生体 = 事情反过来帮了你（吉）</text>
+    <text class="g-text">体用比和 = 你与事情和谐一致（大吉）</text>
+  </view>
+</view>

@@ -1,0 +1,59 @@
+<!-- 每日抽签页面 -->
+<view class="draw-page">
+
+  <!-- 未抽签状态 -->
+  <view wx:if="{{ !drawn }}" class="draw-section">
+    <view class="draw-header">
+      <text class="draw-icon">🏮</text>
+      <text class="draw-title">每日抽签</text>
+      <text class="draw-subtitle">诚心祈愿，心诚则灵</text>
+    </view>
+
+    <!-- 焚香动画 -->
+    <view wx:if="{{ isAnimating }}" class="animation-area">
+      <view class="incense-burner">
+        <text class="burner-icon">🪔</text>
+        <view class="smoke-wrap">
+          <view class="smoke s1"></view>
+          <view class="smoke s2"></view>
+          <view class="smoke s3"></view>
+        </view>
+      </view>
+      <text class="anim-text">{{ loadingText }}</text>
+    </view>
+
+    <!-- 签筒 -->
+    <view wx:else class="qiantong-area" bindtap="onStartDraw">
+      <view class="qiantong {{ isAnimating ? 'shaking' : '' }}">
+        <text class="qiantong-icon">🏺</text>
+        <view class="stick stick-1"></view>
+        <view class="stick stick-2"></view>
+        <view class="stick stick-3"></view>
+      </view>
+      <text class="draw-hint">点击签筒抽取今日运势签</text>
+      <text class="draw-note">每日仅可抽一次</text>
+    </view>
+  </view>
+
+  <!-- 已抽签状态 -->
+  <view wx:else class="result-preview">
+    <view class="result-level level-{{ fortune.level }}">
+      <text class="level-text">{{ fortune.level }}</text>
+    </view>
+    <text class="result-title">{{ fortune.title }}</text>
+    <text class="result-poem">{{ fortune.poem }}</text>
+
+    <view class="result-summary card">
+      <text class="summary-label">📖 签诗大意</text>
+      <text class="summary-text">{{ fortune.modern.summary }}</text>
+    </view>
+
+    <view class="actions">
+      <button class="dao-btn-primary" bindtap="onViewDetail">查看详细解读</button>
+      <button class="dao-btn-outline" open-type="share">分享给朋友</button>
+    </view>
+  </view>
+
+  <!-- 免责声明 -->
+  <view class="disclaimer">仅供娱乐参考，命运掌握在自己手中</view>
+</view>

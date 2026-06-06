@@ -1,0 +1,192 @@
+/**
+ * 道易 — 全局样式
+ * 道家主题色板
+ */
+
+// ═══ 颜色变量 ═══
+// 主色
+$color-primary: #8B1A1A;        // 道袍红
+$color-primary-dark: #6B1010;   // 深红
+$color-gold: #C9A96E;           // 香炉金
+$color-gold-light: #E8D5A3;     // 浅金
+
+// 背景
+$color-bg: #F5F0E8;             // 宣纸色
+$color-bg-dark: #1A1A2E;        // 夜色（深色模式）
+$color-bg-card: #FDF8F0;        // 卡片底色
+$color-bg-warm: #FAF3E6;        // 暖色背景
+
+// 文字
+$color-text: #2C2C2C;           // 正文
+$color-text-light: #6B5E4E;     // 辅助文字
+$color-text-muted: #A09888;     // 弱化文字
+$color-text-gold: #8B7530;      // 金色文字
+
+// 五行色
+$color-wuxing-gold: #F5F0E0;    // 金 — 白/米白
+$color-wuxing-wood: #4CAF50;    // 木 — 绿
+$color-wuxing-water: #2196F3;   // 水 — 蓝
+$color-wuxing-fire: #F44336;    // 火 — 红
+$color-wuxing-earth: #FF9800;   // 土 — 黄
+
+// 功能色
+$color-success: #4CAF50;
+$color-warning: #FF9800;
+$color-danger: #C62828;
+$color-info: #5C6BC0;
+
+// ═══ 间距 ═══
+$spacing-xs: 4rpx;
+$spacing-sm: 8rpx;
+$spacing-md: 16rpx;
+$spacing-lg: 24rpx;
+$spacing-xl: 32rpx;
+$spacing-xxl: 48rpx;
+
+// ═══ 圆角 ═══
+$radius-sm: 4rpx;
+$radius-md: 8rpx;
+$radius-lg: 16rpx;
+$radius-round: 50%;
+
+// ═══ 阴影 ═══
+$shadow-card: 0 2rpx 12rpx rgba(139, 26, 26, 0.08);
+$shadow-card-hover: 0 4rpx 20rpx rgba(139, 26, 26, 0.15);
+$shadow-glow: 0 0 20rpx rgba(201, 169, 110, 0.3);
+
+// ═══ 字体 ═══
+$font-serif: 'STSong', 'SimSun', 'Noto Serif CJK SC', serif;
+$font-sans: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+$font-size-xs: 20rpx;
+$font-size-sm: 24rpx;
+$font-size-md: 28rpx;
+$font-size-lg: 32rpx;
+$font-size-xl: 36rpx;
+$font-size-xxl: 44rpx;
+$font-size-title: 52rpx;
+
+// ═══ 全局重置 ═══
+page {
+  font-family: $font-sans;
+  font-size: $font-size-md;
+  color: $color-text;
+  background-color: $color-bg;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+// ═══ 通用工具类 ═══
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-serif { font-family: $font-serif; }
+.text-sans { font-family: $font-sans; }
+
+.text-primary { color: $color-primary; }
+.text-gold { color: $color-gold; }
+.text-muted { color: $color-text-muted; }
+.text-light { color: $color-text-light; }
+
+.text-xs { font-size: $font-size-xs; }
+.text-sm { font-size: $font-size-sm; }
+.text-md { font-size: $font-size-md; }
+.text-lg { font-size: $font-size-lg; }
+.text-xl { font-size: $font-size-xl; }
+
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+
+.p-md { padding: $spacing-md; }
+.p-lg { padding: $spacing-lg; }
+.p-xl { padding: $spacing-xl; }
+
+// ═══ 通用组件样式 ═══
+
+// 道家风格卡片
+.dao-card {
+  background: $color-bg-card;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  padding: $spacing-lg;
+  margin: $spacing-md;
+  border: 1rpx solid rgba(201, 169, 110, 0.2);
+}
+
+// 主按钮
+.dao-btn-primary {
+  background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+  color: #FFFFFF;
+  border: none;
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-size-lg;
+  font-family: $font-serif;
+  box-shadow: 0 4rpx 12rpx rgba(139, 26, 26, 0.3);
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+}
+
+// 描边按钮
+.dao-btn-outline {
+  background: transparent;
+  color: $color-primary;
+  border: 2rpx solid $color-primary;
+  border-radius: $radius-md;
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-size-md;
+
+  &:active {
+    background: rgba(139, 26, 26, 0.05);
+  }
+}
+
+// 金色文字标题
+.dao-title {
+  font-family: $font-serif;
+  font-size: $font-size-xl;
+  color: $color-primary;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 60rpx;
+    height: 2rpx;
+    background: $color-gold;
+    margin: $spacing-sm auto 0;
+  }
+}
+
+// 分割装饰线
+.dao-divider {
+  height: 1rpx;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    $color-gold 20%,
+    $color-gold 80%,
+    transparent
+  );
+  margin: $spacing-lg 0;
+}
+
+// 免责声明
+.disclaimer {
+  text-align: center;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  padding: $spacing-md;
+  line-height: 1.8;
+}

@@ -1,0 +1,76 @@
+<!-- 个人中心 -->
+<view class="profile-page">
+
+  <!-- 用户信息区 -->
+  <view class="user-section">
+    <view class="user-card">
+      <view class="avatar-wrap">
+        <image
+          wx:if="{{ userInfo && userInfo.avatarUrl }}"
+          class="avatar"
+          src="{{ userInfo.avatarUrl }}"
+          mode="cover"
+        />
+        <view wx:else class="avatar-placeholder">👤</view>
+      </view>
+
+      <view class="user-info" wx:if="{{ isLoggedIn && userInfo }}">
+        <text class="nickname">{{ userInfo.nickName }}</text>
+        <text class="user-status">已登录</text>
+      </view>
+
+      <button
+        wx:else
+        class="login-btn"
+        open-type="getUserInfo"
+        bindgetuserinfo="onGetUserInfo"
+      >
+        微信一键登录
+      </button>
+    </view>
+  </view>
+
+  <!-- 使用统计 -->
+  <view class="stats-section">
+    <view class="section-title">
+      <text>📊 占卜统计</text>
+    </view>
+    <view class="stats-grid">
+      <view
+        wx:for="{{ stats }}"
+        wx:key="module"
+        class="stat-item"
+      >
+        <text class="stat-icon">{{ item.icon }}</text>
+        <text class="stat-count">{{ item.count }}</text>
+        <text class="stat-name">{{ item.name }}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 设置 -->
+  <view class="settings-section">
+    <view class="section-title">
+      <text>⚙️ 设置</text>
+    </view>
+    <view
+      wx:for="{{ settings }}"
+      wx:key="key"
+      class="setting-item"
+      bindtap="onSettingTap"
+      data-key="{{ item.key }}"
+    >
+      <view class="setting-info">
+        <text class="setting-title">{{ item.title }}</text>
+        <text class="setting-desc">{{ item.desc }}</text>
+      </view>
+      <text class="setting-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 底部 -->
+  <view class="footer">
+    <text class="footer-text">道易 — 传承道家文化</text>
+    <text class="footer-text">仅供娱乐参考</text>
+  </view>
+</view>

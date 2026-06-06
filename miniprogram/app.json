@@ -1,0 +1,90 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/divine/index",
+    "pages/profile/index"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/daily-fortune",
+      "pages": [
+        "draw",
+        "result"
+      ]
+    },
+    {
+      "root": "pages/liuyao",
+      "pages": [
+        "coin-toss",
+        "result",
+        "detail"
+      ]
+    },
+    {
+      "root": "pages/bazi",
+      "pages": [
+        "input",
+        "result",
+        "analysis"
+      ]
+    },
+    {
+      "root": "pages/zwds",
+      "pages": [
+        "input",
+        "chart",
+        "palace-detail"
+      ]
+    },
+    {
+      "root": "pages/meihua",
+      "pages": [
+        "input",
+        "result",
+        "detail"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["pages/daily-fortune"]
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#8B1A1A",
+    "navigationBarTitleText": "道易",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F5F0E8"
+  },
+  "tabBar": {
+    "color": "#8B7D6B",
+    "selectedColor": "#8B1A1A",
+    "backgroundColor": "#FDF8F0",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/divine/index",
+        "text": "占卜",
+        "iconPath": "assets/icons/compass.png",
+        "selectedIconPath": "assets/icons/compass-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile-active.png"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

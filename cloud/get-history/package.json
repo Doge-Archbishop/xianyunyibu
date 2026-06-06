@@ -1,0 +1,7 @@
+{
+  "name": "get-history",
+  "version": "1.0.0",
+  "description": "获取占卜历史",
+  "main": "index.js",
+  "dependencies": { "wx-server-sdk": "latest" }
+}

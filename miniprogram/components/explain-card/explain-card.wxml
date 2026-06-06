@@ -1,0 +1,14 @@
+<!-- 可折叠解释面板 -->
+<view class="explain-card">
+  <view class="card-header" bindtap="onToggle">
+    <view class="header-left">
+      <text class="header-icon">{{ icon }}</text>
+      <text class="header-title">{{ title }}</text>
+    </view>
+    <text class="header-arrow {{ isExpanded ? 'expanded' : '' }}">▾</text>
+  </view>
+
+  <view wx:if="{{ isExpanded }}" class="card-body">
+    <slot></slot>
+  </view>
+</view>

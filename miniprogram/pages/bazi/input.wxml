@@ -1,0 +1,38 @@
+<view class="bazi-page">
+  <view class="page-header">
+    <text class="page-icon">📜</text>
+    <text class="page-title">八字排盘</text>
+    <text class="page-desc">四柱推命，五行平衡。根据出生年月日时推算命理。</text>
+  </view>
+
+  <view class="form-section">
+    <view class="form-group">
+      <text class="form-label">出生日期（阳历）</text>
+      <picker mode="date" value="{{ birthDate }}" start="1900-01-01" end="2100-12-31" bindchange="onDateChange">
+        <view class="form-picker">{{ birthDate }}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">出生时辰</text>
+      <picker mode="selector" range="{{ hourBranches }}" range-key="label" bindchange="onHourChange">
+        <view class="form-picker">{{ hourBranches[0].label }}</view>
+      </picker>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">性别</text>
+      <view class="gender-tabs">
+        <view class="gender-tab {{ gender === '男' ? 'active' : '' }}" bindtap="onGenderChange" data-gender="男">男</view>
+        <view class="gender-tab {{ gender === '女' ? 'active' : '' }}" bindtap="onGenderChange" data-gender="女">女</view>
+      </view>
+    </view>
+  </view>
+
+  <button class="dao-btn-primary" bindtap="onCalculate" style="margin-top:32rpx">开始排盘</button>
+
+  <view class="tip-card">
+    <text class="tip-title">📖 八字小知识</text>
+    <text class="tip-text">八字又称四柱命理，以出生年月日时四个时间点换算成天干地支（共八个字），通过分析五行生克、十神关系来推演一个人的性格特征和命运走势。</text>
+  </view>
+</view>

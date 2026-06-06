@@ -1,0 +1,169 @@
+/**
+ * 个人中心样式
+ */
+
+.profile-page {
+  min-height: 100vh;
+  padding-bottom: 60rpx;
+}
+
+// ═══ 用户信息 ═══
+.user-section {
+  padding: 32rpx 32rpx 16rpx;
+}
+
+.user-card {
+  background: linear-gradient(135deg, #8B1A1A, #6B1010);
+  border-radius: 16rpx;
+  padding: 40rpx 32rpx;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  box-shadow: 0 8rpx 24rpx rgba(139, 26, 26, 0.2);
+}
+
+.avatar-wrap {
+  margin-right: 24rpx;
+}
+
+.avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  border: 3rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.avatar-placeholder {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.user-status {
+  font-size: 24rpx;
+  opacity: 0.7;
+}
+
+.login-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border: 2rpx solid rgba(255, 255, 255, 0.4);
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  padding: 16rpx 32rpx;
+}
+
+// ═══ 统计 ═══
+.stats-section {
+  padding: 16rpx 32rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2C2C2C;
+  margin-bottom: 16rpx;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12rpx;
+}
+
+.stat-item {
+  background: #FDF8F0;
+  border-radius: 12rpx;
+  padding: 20rpx 8rpx;
+  text-align: center;
+  box-shadow: 0 2rpx 8rpx rgba(139, 26, 26, 0.04);
+}
+
+.stat-icon {
+  font-size: 32rpx;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.stat-count {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #8B1A1A;
+  display: block;
+}
+
+.stat-name {
+  font-size: 20rpx;
+  color: #A09888;
+  display: block;
+}
+
+// ═══ 设置 ═══
+.settings-section {
+  padding: 16rpx 32rpx;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  background: #FDF8F0;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  margin-bottom: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(139, 26, 26, 0.04);
+
+  &:active {
+    background: #F5F0E8;
+  }
+}
+
+.setting-info {
+  flex: 1;
+}
+
+.setting-title {
+  font-size: 28rpx;
+  color: #2C2C2C;
+  display: block;
+  margin-bottom: 4rpx;
+}
+
+.setting-desc {
+  font-size: 22rpx;
+  color: #A09888;
+  display: block;
+}
+
+.setting-arrow {
+  font-size: 32rpx;
+  color: #C9A96E;
+}
+
+// ═══ 底部 ═══
+.footer {
+  text-align: center;
+  padding: 48rpx 0;
+}
+
+.footer-text {
+  display: block;
+  font-size: 22rpx;
+  color: #A09888;
+  line-height: 1.8;
+}

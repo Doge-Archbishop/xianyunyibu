@@ -1,0 +1,40 @@
+<view class="analysis-page" wx:if="{{ result }}">
+  <view class="page-title">八字详细分析</view>
+
+  <view class="card">
+    <text class="card-title">🧑 日主分析</text>
+    <text class="card-text">{{ result.interpretation.dayMasterAnalysis }}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">🎨 五行平衡</text>
+    <text class="card-text">{{ result.interpretation.wuxingBalance }}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">💼 事业运势</text>
+    <text class="card-text">{{ result.interpretation.career }}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">💰 财运分析</text>
+    <text class="card-text">{{ result.interpretation.wealth }}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">❤️ 感情运势</text>
+    <text class="card-text">{{ result.interpretation.love }}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">🏥 健康建议</text>
+    <text class="card-text">{{ result.interpretation.health }}</text>
+  </view>
+
+  <view class="card highlight">
+    <text class="card-title">📅 当前运势</text>
+    <text class="card-text">{{ result.interpretation.currentYun }}</text>
+  </view>
+
+  <view class="disclaimer">以上分析仅供娱乐参考，命运掌握在自己手中</view>
+</view>

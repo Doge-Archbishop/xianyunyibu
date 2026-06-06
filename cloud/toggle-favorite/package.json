@@ -1,0 +1,7 @@
+{
+  "name": "toggle-favorite",
+  "version": "1.0.0",
+  "description": "收藏/取消收藏",
+  "main": "index.js",
+  "dependencies": { "wx-server-sdk": "latest" }
+}

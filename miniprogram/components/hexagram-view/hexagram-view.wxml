@@ -1,0 +1,76 @@
+<!-- 卦象可视化组件 -->
+<view class="hexagram-view">
+  <view wx:if="{{ title }}" class="hexagram-title">{{ title }}</view>
+
+  <view class="hexagram-content">
+    <!-- 本卦 -->
+    <view class="hexagram-column">
+      <view wx:if="{{ primaryName }}" class="column-title text-serif">{{ primaryName }}</view>
+      <view wx:else class="column-title text-serif">本卦</view>
+
+      <view class="yao-list">
+        <view
+          wx:for="{{ lineLabels }}"
+          wx:key="index"
+          class="yao-row {{ item.isChanging ? 'changing' : '' }}"
+        >
+          <!-- 世应标记 -->
+          <view class="yao-marker">
+            <text wx:if="{{ item.isShi }}" class="marker-shi">世</text>
+            <text wx:elif="{{ item.isYing }}" class="marker-ying">应</text>
+          </view>
+
+          <!-- 爻线 -->
+          <view class="yao-line-wrap">
+            <!-- 阳爻 ————— -->
+            <view wx:if="{{ item.primaryYang }}" class="yao-line yang">
+              <view class="line-segment"></view>
+            </view>
+            <!-- 阴爻 —  — -->
+            <view wx:else class="yao-line yin">
+              <view class="line-segment"></view>
+              <view class="line-gap"></view>
+              <view class="line-segment"></view>
+            </view>
+          </view>
+
+          <!-- 六亲 -->
+          <view class="yao-relation" wx:if="{{ showLiuQin && item.relation }}">
+            <text>{{ item.relation }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 变卦 -->
+    <view wx:if="{{ transformedLines }}" class="hexagram-column transformed">
+      <view wx:if="{{ transformedName }}" class="column-title text-serif">{{ transformedName }}</view>
+      <view wx:else class="column-title text-serif">变卦</view>
+
+      <view class="yao-list">
+        <view
+          wx:for="{{ lineLabels }}"
+          wx:key="index"
+          class="yao-row"
+        >
+          <view class="yao-line-wrap">
+            <view wx:if="{{ item.transformedYang }}" class="yao-line yang {{ item.isChanging ? 'changed' : '' }}">
+              <view class="line-segment"></view>
+            </view>
+            <view wx:else class="yao-line yin {{ item.isChanging ? 'changed' : '' }}">
+              <view class="line-segment"></view>
+              <view class="line-gap"></view>
+              <view class="line-segment"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 图例 -->
+  <view wx:if="{{ changingLines.length > 0 }}" class="legend">
+    <text class="legend-dot changing"></text>
+    <text class="legend-text">圆点 = 动爻（老阳或老阴，发生变化）</text>
+  </view>
+</view>

@@ -1,0 +1,29 @@
+{
+  "monthlyStarSpirits": [
+    { "name": "天德", "description": "天上之德，最大的吉神，能化解一切灾厄", "plainText": "天德吉星当值，本月有上天庇护，大事化小小事化了" },
+    { "name": "月德", "description": "月亮之德，与天德并称，次吉之神", "plainText": "月德吉星当值，本月运气不错，适合做重要的事" },
+    { "name": "天赦", "description": "上天赦免罪恶之日，宜祈福、忏悔", "plainText": "本月有天赦吉星，之前的不顺利有望得到赦免和缓解" },
+    { "name": "天乙贵人", "description": "最大的贵人星，逢之遇难有救", "plainText": "天乙贵人照命，本月容易遇到能帮助你的人" },
+    { "name": "文昌贵人", "description": "主学业、文化、功名", "plainText": "文昌贵人当值，本月学习运和文化运特别强" },
+    { "name": "学堂", "description": "主学业进步、考试顺利", "plainText": "学堂星照命，适合学习和考试，效率加倍" },
+    { "name": "将星", "description": "主权威、领导力", "plainText": "将星临命，本月领导力和决断力都特别强" },
+    { "name": "华盖", "description": "主孤独、艺术、宗教缘", "plainText": "华盖星临照，本月可能喜欢独处，艺术灵感强" },
+    { "name": "驿马", "description": "主奔波、旅行、变动", "plainText": "驿马星动，本月可能较多出差或旅行，或有变动" },
+    { "name": "桃花", "description": "主异性缘、社交、魅力", "plainText": "桃花星照命，本月异性缘好，社交活跃" },
+    { "name": "红鸾", "description": "主婚姻、喜庆", "plainText": "红鸾星动，本月婚姻运强，适合婚嫁之事" },
+    { "name": "天喜", "description": "主喜事、生育", "plainText": "天喜星临，本月可能有喜事发生，适合庆祝" },
+    { "name": "禄神", "description": "主财运、俸禄", "plainText": "禄神当值，本月财运较好，可能有额外收入" },
+    { "name": "金匮", "description": "主储蓄、收藏", "plainText": "金匮星照命，本月适合储蓄和理财规划" },
+    { "name": "丧门", "description": "主白事、不吉", "plainText": "本月需注意家人健康，尽量避免参加丧事" },
+    { "name": "白虎", "description": "主血光、意外", "plainText": "白虎星临，本月需注意安全，避免危险活动" },
+    { "name": "五鬼", "description": "主口舌是非、小人", "plainText": "五鬼星当值，本月需提防小人和口舌是非" },
+    { "name": "官符", "description": "主官司、纠纷", "plainText": "官符星临，本月需注意避免官司和法律纠纷" },
+    { "name": "死符", "description": "主病痛、不顺利", "plainText": "本月需特别注意身体健康，容易生病或受伤" },
+    { "name": "岁破", "description": "主冲犯太岁，诸事不顺", "plainText": "岁破临命，本月尽量避免重要决策和重大行动" }
+  ],
+  "shenShaCategories": {
+    "吉神": ["天德", "月德", "天赦", "天乙贵人", "文昌贵人", "学堂", "将星", "禄神", "金匮", "红鸾", "天喜"],
+    "凶神": ["丧门", "白虎", "五鬼", "官符", "死符", "岁破"],
+    "中性": ["华盖", "驿马", "桃花"]
+  }
+}

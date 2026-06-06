@@ -1,0 +1,64 @@
+<!-- 梅花易数起卦页面 -->
+<view class="meihua-page">
+
+  <view class="page-header">
+    <text class="page-icon">🌸</text>
+    <text class="page-title">梅花易数</text>
+    <text class="page-desc">观物取象，以数起卦。万物皆可成为占卜的依据。</text>
+  </view>
+
+  <!-- 起卦方式选择 -->
+  <view class="method-tabs">
+    <view
+      wx:for="{{ [{key:'time',label:'时间起卦'},{key:'manual',label:'手动输入'},{key:'random',label:'随机'}] }}"
+      wx:key="key"
+      class="method-tab {{ method === item.key ? 'active' : '' }}"
+      bindtap="onMethodChange"
+      data-method="{{ item.key }}"
+    >
+      {{ item.label }}
+    </view>
+  </view>
+
+  <!-- 时间起卦 -->
+  <view wx:if="{{ method === 'time' }}" class="method-content">
+    <view class="time-display">
+      <text class="time-label">以当前日期时间起卦</text>
+      <text class="time-hint">自动计算上卦、下卦和动爻</text>
+    </view>
+  </view>
+
+  <!-- 手动输入 -->
+  <view wx:if="{{ method === 'manual' }}" class="method-content">
+    <view class="input-group">
+      <text class="input-label">第一个数（上卦）</text>
+      <input class="dao-input" type="number" placeholder="输入数字" value="{{ input1 }}" bindinput="onInputChange" data-field="input1" />
+    </view>
+    <view class="input-group">
+      <text class="input-label">第二个数（下卦）</text>
+      <input class="dao-input" type="number" placeholder="输入数字" value="{{ input2 }}" bindinput="onInputChange" data-field="input2" />
+    </view>
+    <view class="input-group">
+      <text class="input-label">第三个数（动爻）</text>
+      <input class="dao-input" type="number" placeholder="输入数字" value="{{ input3 }}" bindinput="onInputChange" data-field="input3" />
+    </view>
+    <button class="dao-btn-outline" bindtap="onRandomNumbers" style="margin-top:12rpx">🎲 随机生成数字</button>
+  </view>
+
+  <!-- 随机起卦 -->
+  <view wx:if="{{ method === 'random' }}" class="method-content">
+    <view class="random-display">
+      <text class="random-label">系统将自动生成三个随机数</text>
+      <text class="random-hint">静心冥想你要问的事，然后点击起卦</text>
+    </view>
+  </view>
+
+  <button class="dao-btn-primary" bindtap="onCalculate" style="margin-top:32rpx">
+    开始起卦
+  </button>
+
+  <view class="tip-card">
+    <text class="tip-title">📖 梅花易数小知识</text>
+    <text class="tip-text">梅花易数由宋代邵雍（邵康节）所创，是一种'观物取象'的占卜方法。万物皆可为卦象所取，花开花落、鸟鸣云起，皆可作为起卦的依据。因其灵动机变，被称为'易学中最活泼的方法'。</text>
+  </view>
+</view>

@@ -1,0 +1,37 @@
+.result-page { padding: 24rpx 32rpx 60rpx; }
+.page-title { font-size: 36rpx; font-family: 'STSong', serif; color: #8B1A1A; text-align: center; margin-bottom: 16rpx; }
+
+.numbers-row { text-align: center; margin-bottom: 20rpx; }
+.num-label { font-size: 24rpx; color: #A09888; }
+.num-value { font-size: 28rpx; color: #C9A96E; font-weight: bold; }
+
+.trigrams-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24rpx; margin-bottom: 24rpx;
+}
+.trigram-box {
+  background: #FDF8F0; border-radius: 12rpx; padding: 20rpx 32rpx;
+  text-align: center; border: 1rpx solid rgba(201,169,110,0.2);
+}
+.t-label { font-size: 22rpx; color: #A09888; display: block; }
+.t-name { font-size: 28rpx; font-weight: bold; color: #2C2C2C; }
+.t-symbol { font-size: 36rpx; display: block; }
+.t-wuxing { font-size: 22rpx; color: #8B1A1A; }
+.plus-sign { font-size: 32rpx; color: #C9A96E; }
+
+.three-hexagrams { margin-bottom: 24rpx; }
+.hex-col { margin-bottom: 16rpx; }
+.col-title { font-size: 26rpx; font-weight: bold; color: #8B1A1A; text-align: center; margin-bottom: 8rpx; display: block; }
+
+.tiyong-card {
+  background: #FAF3E6; border-radius: 12rpx; padding: 24rpx;
+  margin-bottom: 24rpx; border: 1rpx solid rgba(201,169,110,0.3);
+}
+.card-title { font-size: 28rpx; font-weight: bold; color: #2C2C2C; display: block; margin-bottom: 12rpx; }
+.tiyong-row { display: flex; align-items: center; justify-content: space-around; margin-bottom: 12rpx; }
+.tiyong-item { text-align: center; }
+.tiyong-label { font-size: 24rpx; color: #A09888; display: block; }
+.tiyong-value { font-size: 32rpx; font-weight: bold; color: #2C2C2C; }
+.tiyong-arrow { font-size: 28rpx; color: #C9A96E; }
+.tiyong-relation { font-size: 28rpx; font-weight: bold; color: #8B1A1A; display: block; text-align: center; margin-bottom: 8rpx; }
+.tiyong-analysis { font-size: 26rpx; color: #6B5E4E; line-height: 1.8; }

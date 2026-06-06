@@ -1,0 +1,24 @@
+<view class="detail-page" wx:if="{{ result }}">
+  <view class="page-title">逐爻详解</view>
+
+  <view
+    wx:for="{{ lineDetails }}"
+    wx:key="label"
+    class="line-card {{ item.label.indexOf('动') > -1 ? 'changing' : '' }}"
+  >
+    <text class="line-label">{{ item.label }}</text>
+    <text class="line-desc">{{ item.desc }}</text>
+  </view>
+
+  <!-- 六亲说明 -->
+  <view class="glossary">
+    <text class="glossary-title">📚 六亲说明</text>
+    <text class="glossary-text">父母：庇护你的人事物（长辈、文书、房屋）</text>
+    <text class="glossary-text">兄弟：与你同行的人（兄弟姐妹、同辈朋友）</text>
+    <text class="glossary-text">妻财：你掌控的资源（财富、资产）</text>
+    <text class="glossary-text">官鬼：约束你的力量（上司、规则、压力）</text>
+    <text class="glossary-text">子孙：你创造的事物（下属、子女、创造力）</text>
+  </view>
+
+  <view class="disclaimer">仅供娱乐参考</view>
+</view>

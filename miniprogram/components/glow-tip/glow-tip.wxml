@@ -1,0 +1,18 @@
+<!-- 术语悬浮解释 -->
+<view class="glow-tip-wrapper">
+  <view class="glow-term" bindtap="onToggle">
+    <text class="term-text">{{ term }}</text>
+    <text class="term-icon">?</text>
+  </view>
+
+  <view
+    wx:if="{{ isVisible }}"
+    class="glow-popup position-{{ position }}"
+  >
+    <view class="popup-arrow"></view>
+    <view class="popup-content">
+      <text class="popup-text">{{ plainText }}</text>
+    </view>
+    <view class="popup-close" bindtap="onClose">✕</view>
+  </view>
+</view>

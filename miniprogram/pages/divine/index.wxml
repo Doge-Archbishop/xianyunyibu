@@ -1,0 +1,61 @@
+<!-- 占卜页 — 历史记录 -->
+<view class="divine-page">
+
+  <!-- 空状态 -->
+  <view wx:if="{{ isEmpty }}" class="empty-state">
+    <text class="empty-icon">🧭</text>
+    <text class="empty-title">暂无占卜记录</text>
+    <text class="empty-desc">前往首页选择一种占卜方式，开始你的道家探索之旅吧</text>
+  </view>
+
+  <!-- 历史列表 -->
+  <view wx:else class="history-list">
+    <view class="section-header">
+      <text class="header-title">占卜记录</text>
+      <text class="header-count">共 {{ history.length }} 条</text>
+    </view>
+    <view
+      wx:for="{{ history }}"
+      wx:key="id"
+      class="history-item"
+      bindtap="onHistoryTap"
+      data-id="{{ item.id }}"
+      data-module="{{ item.module }}"
+    >
+      <view class="item-icon">{{ item.icon }}</view>
+      <view class="item-info">
+        <view class="item-header">
+          <text class="item-module">{{ item.moduleName }}</text>
+          <text class="item-time">{{ item.createTime }}</text>
+        </view>
+        <text class="item-summary">{{ item.resultSummary }}</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 快速入口 -->
+  <view class="quick-section">
+    <view class="section-header">
+      <text class="header-title">快速开始</text>
+    </view>
+    <view class="quick-grid">
+      <view class="quick-item" bindtap="onQuickEntry" data-url="/pages/liuyao/coin-toss">
+        <text class="quick-icon">☯</text>
+        <text class="quick-name">六爻</text>
+      </view>
+      <view class="quick-item" bindtap="onQuickEntry" data-url="/pages/bazi/input">
+        <text class="quick-icon">📜</text>
+        <text class="quick-name">八字</text>
+      </view>
+      <view class="quick-item" bindtap="onQuickEntry" data-url="/pages/zwds/input">
+        <text class="quick-icon">🌟</text>
+        <text class="quick-name">紫微</text>
+      </view>
+      <view class="quick-item" bindtap="onQuickEntry" data-url="/pages/meihua/input">
+        <text class="quick-icon">🌸</text>
+        <text class="quick-name">梅花</text>
+      </view>
+    </view>
+  </view>
+</view>
